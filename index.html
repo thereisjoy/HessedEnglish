@@ -756,8 +756,29 @@ input::placeholder{color:var(--text-muted)}
 </footer>
 
 <script>
-// ═══ ADMIN OVERRIDES (localStorage) ═══
-const _D = (()=>{ try{ return JSON.parse(localStorage.getItem('hessedu_data')||'{}'); }catch(e){ return {}; }})();
+(async function init(){
+// ═══ LOAD CONFIG: GitHub raw → localStorage fallback ═══
+// admin.html에서 저장한 설정을 GitHub에서 불러옵니다 (어느 기기에서 접속해도 동일하게 반영)
+let _D = {};
+try {
+  const _ctrl = new AbortController();
+  const _tid = setTimeout(() => _ctrl.abort(), 2500); // 2.5초 타임아웃
+  const _resp = await fetch(
+    'https://raw.githubusercontent.com/thereisjoy/HessedEnglish/main/hessedu_config.json?v=' + Date.now(),
+    { signal: _ctrl.signal }
+  );
+  clearTimeout(_tid);
+  if (_resp.ok) {
+    const _txt = await _resp.text();
+    if (_txt.trim().startsWith('{')) {
+      _D = JSON.parse(_txt);
+      localStorage.setItem('hessedu_data', _txt); // 오프라인 폴백용 캐시
+    }
+  }
+} catch(_e) { /* 네트워크 오류 시 localStorage 폴백 */ }
+if (!Object.keys(_D).length) {
+  try { _D = JSON.parse(localStorage.getItem('hessedu_data') || '{}'); } catch(_e2) {}
+}
 if (_D.accentColor) document.documentElement.style.setProperty('--navy', _D.accentColor);
 if (_D.siteTitle) document.title = _D.siteTitle;
 
@@ -966,6 +987,8 @@ rows.forEach((row, i) => {
 document.querySelector('.about-credentials')?.addEventListener('mouseleave', () => {
   rows.forEach(r => r.style.opacity = '1');
 });
+
+})(); // end async init
 </script>
 </body>
 </html>
