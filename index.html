@@ -406,6 +406,54 @@ input::placeholder{color:var(--text-muted)}
 .footer-legal a{font-size:13px;color:var(--text-muted);transition:color .2s}
 .footer-legal a:hover{color:var(--text)}
 
+/* ═══ HERO PHOTO ═══ */
+.hero-photo-wrap{
+  position:relative;width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-photo{
+  height:88%;max-height:580px;width:auto;
+  object-fit:cover;object-position:center top;
+  border-radius:clamp(16px,2.5vw,28px);
+  filter:brightness(1.02) contrast(0.97) saturate(0.88);
+  box-shadow:
+    0 32px 80px rgba(100,70,40,.13),
+    0 8px 24px rgba(100,70,40,.08),
+    inset 0 0 0 1px rgba(255,248,235,.25);
+}
+/* floating label chips */
+.hero-chip{
+  position:absolute;display:flex;align-items:center;gap:7px;
+  padding:9px 18px;border-radius:100px;
+  font-size:12px;font-weight:600;letter-spacing:-.2px;
+  white-space:nowrap;backdrop-filter:blur(16px) saturate(180%);
+  box-shadow:0 4px 20px rgba(28,25,21,.10);
+  animation:chipFloat 6s ease-in-out infinite;
+}
+.hero-chip-1{
+  background:rgba(247,244,239,.90);border:1px solid rgba(28,25,21,.07);
+  color:var(--text);top:14%;left:-4%;animation-delay:0s;
+}
+.hero-chip-2{
+  background:var(--text);color:var(--bg);border:1px solid transparent;
+  bottom:30%;left:-6%;animation-delay:2s;
+}
+.hero-chip-3{
+  background:rgba(184,145,107,.15);border:1px solid rgba(184,145,107,.35);
+  color:var(--oak,var(--navy));top:40%;right:-2%;animation-delay:4s;
+}
+.hero-chip-4{
+  background:rgba(247,244,239,.90);border:1px solid rgba(28,25,21,.07);
+  color:var(--text);bottom:14%;right:0%;animation-delay:1s;
+}
+.chip-dot{width:7px;height:7px;border-radius:50%;background:var(--navy);flex-shrink:0}
+.hero-chip-2 .chip-dot{background:#B8916B}
+.hero-chip-3 .chip-dot{background:var(--navy)}
+@keyframes chipFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-7px)}
+}
+
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:900px){
   .courses-grid,.about-grid,.results-grid,.testimonials-grid,.pricing-grid,.blog-grid{grid-template-columns:1fr!important}
@@ -414,6 +462,8 @@ input::placeholder{color:var(--text-muted)}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .footer-links{flex-direction:column;gap:24px}
   .hero-sphere-a,.hero-sphere-b,.hero-sphere-c,.hero-sphere-d,.hero-light{display:none}
+  .hero-chip{display:none}
+  .hero-photo{height:72%;max-height:420px}
 }
 @media(max-width:600px){
   .stats-grid{grid-template-columns:1fr}
@@ -443,9 +493,17 @@ input::placeholder{color:var(--text-muted)}
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <!-- ── 교육 현장 SVG 일러스트 ── -->
+  <!-- ── 선생님 실제 사진 ── -->
   <div class="hero-illustration">
-    <svg viewBox="0 0 520 580" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <div class="hero-photo-wrap">
+      <img src="isabel_photo.jpg" alt="Isabel Kim — 1:1 영어회화 전문 코치" class="hero-photo">
+      <div class="hero-chip hero-chip-1"><span class="chip-dot"></span>1:1 프라이빗 레슨</div>
+      <div class="hero-chip hero-chip-2"><span class="chip-dot"></span>삼성 · LG · 현대 출강</div>
+      <div class="hero-chip hero-chip-3"><span class="chip-dot"></span>동시통역사 출신</div>
+      <div class="hero-chip hero-chip-4"><span class="chip-dot"></span>500+ 수강생</div>
+    </div>
+  </div>
+  <div style="display:none"><!-- legacy svg placeholder --><svg viewBox="0 0 520 580" xmlns="http://www.w3.org/2000/svg" fill="none">
 
       <!-- 유리 창문 프레임 배경 -->
       <rect x="30" y="20" width="460" height="390" rx="4" fill="rgba(237,229,216,.45)" stroke="rgba(28,25,21,.07)" stroke-width="1"/>
@@ -570,12 +628,11 @@ input::placeholder{color:var(--text-muted)}
       </defs>
       <ellipse cx="260" cy="76" rx="28" ry="6" fill="rgba(255,235,150,.12)"/>
 
-    </svg>
-  </div>
+    </svg></div><!-- end legacy svg -->
 
   <div class="hero-content fade-in">
-    <div class="hero-brand" id="heroBrand">HessEdU · 영어회화</div>
-    <h1 id="heroH1">말이 막히는 순간,<br><em>더 이상 없도록.</em></h1>
+    <div class="hero-brand" id="heroBrand">HessEdU · 1:1 프라이빗 영어회화</div>
+    <h1 id="heroH1">말문이 트이는<br><em>1:1 레슨.</em></h1>
     <a href="#courses" class="hero-btn" id="heroBtn">
       영어회화 시작하기 <span class="arrow">↗</span>
     </a>
@@ -586,7 +643,7 @@ input::placeholder{color:var(--text-muted)}
 <!-- ═══ INTRO ═══ -->
 <section class="intro section-pad">
   <div class="container fade-in">
-    <p id="introText">일상 대화부터 비즈니스까지 — <em>진짜 쓰이는 영어회화,</em> 여기서 배웁니다.</p>
+    <p id="introText">1:1 맞춤 레슨으로 — <em>당신의 영어가 달라집니다.</em></p>
   </div>
 </section>
 
@@ -594,8 +651,8 @@ input::placeholder{color:var(--text-muted)}
 <section class="stats" style="padding:0">
   <div class="container" style="padding-top:80px;padding-bottom:80px">
     <div class="stats-grid fade-in" id="statsGrid">
-      <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>400+</div><div class="stat-label">학습 콘텐츠</div></div>
-      <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>7년+</div><div class="stat-label">교육 경력</div></div>
+      <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>1:1</div><div class="stat-label">프라이빗 맞춤 레슨</div></div>
+      <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>30+</div><div class="stat-label">출강 기업</div></div>
       <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>500+</div><div class="stat-label">수강생</div></div>
       <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>97%</div><div class="stat-label">만족도</div></div>
     </div>
@@ -629,16 +686,16 @@ input::placeholder{color:var(--text-muted)}
   <div class="container">
     <div class="about-grid">
       <div class="about-image fade-in" id="aboutPhotoContainer">
-        <span class="about-image-placeholder">IK</span>
+        <img src="isabel_photo.jpg" alt="Isabel Kim" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:inherit;">
       </div>
       <div class="fade-in" style="transition-delay:.2s">
         <div class="about-label">About the instructor</div>
         <h2 id="aboutName">Meet <em>Isabel Kim</em></h2>
-        <p class="about-text" id="aboutText">안녕하세요, Isabel Kim입니다. 동시통역사 출신으로 '진짜 쓰이는 영어'를 가르치는 것에 열정을 쏟고 있습니다. 교과서 영어가 아닌, 원어민이 실제로 사용하는 자연스러운 영어회화를 2019년부터 400편 이상의 콘텐츠로 기록해왔습니다. 이제 그 노하우를 HessEdU에서 체계적으로 만나보세요.</p>
+        <p class="about-text" id="aboutText">안녕하세요, Isabel Kim입니다. 동시통역사 출신으로 삼성·LG·현대 등 국내 대기업에서 비즈니스 영어 강의를 진행해온 전문 코치입니다. 교과서 영어가 아닌 실전에서 바로 쓰이는 자연스러운 영어를 1:1 맞춤 레슨으로 가르칩니다. 수강생 개개인의 수준과 목표에 맞춘 커리큘럼으로, 3개월 안에 확실한 변화를 경험하실 수 있습니다.</p>
         <div class="about-tags" id="aboutTags">
-          <span class="about-tag">영어회화</span>
+          <span class="about-tag">1:1 프라이빗 레슨</span>
           <span class="about-tag">비즈니스 영어</span>
-          <span class="about-tag">발음 교정</span>
+          <span class="about-tag">기업 출강</span>
           <span class="about-tag">동시통역</span>
         </div>
         <div class="about-credentials" id="aboutCredentials"></div>
@@ -710,8 +767,8 @@ input::placeholder{color:var(--text-muted)}
 <section class="cta">
   <div class="container fade-in">
     <h2 id="ctaH2">말문이 트이는 순간,<br><em>지금 시작하세요.</em></h2>
-    <button class="cta-btn" id="ctaBtn" onclick="location.href='#pricing'">영어회화 무료 체험 <span>↗</span></button>
-    <p class="cta-proof" id="ctaProof">500+ 수강생이 선택한 영어회화 전문 플랫폼</p>
+    <button class="cta-btn" id="ctaBtn" onclick="location.href='#pricing'">1:1 레슨 무료 체험 <span>↗</span></button>
+    <p class="cta-proof" id="ctaProof">삼성·LG·현대 출강 강사 — 500+ 수강생이 선택한 1:1 영어회화 전문 플랫폼</p>
   </div>
 </section>
 
@@ -784,10 +841,10 @@ if (_D.siteTitle) document.title = _D.siteTitle;
 
 // ═══ DATA ═══
 const courses = _D.courses || [
-  { icon:"💬", label:"일상 영어회화", count:148, desc:"원어민이 실제로 쓰는 일상 표현과 자연스러운 대화 흐름 완성", topics:["첫 만남 & 자기소개","감정 & 의견 표현","전화 & 메시지 영어","소셜 상황 대처법"] },
-  { icon:"💼", label:"비즈니스 영어회화", count:112, desc:"회의실부터 이메일까지, 직장인 필수 실전 영어회화 완전 정복", topics:["회의 & 발표 영어","원어민 동료와 소통","협상 & 설득 표현","비즈니스 이메일 작성"] },
-  { icon:"✈️", label:"여행 영어회화", count:87, desc:"공항, 호텔, 레스토랑 — 어디서든 막히지 않는 여행 영어 완성", topics:["공항 & 교통 영어","호텔 체크인 & 요청","레스토랑 주문 & 불만","긴급 상황 대처 영어"] },
-  { icon:"🎯", label:"발음 & 유창성", count:53, desc:"입 근육부터 리듬까지, 원어민처럼 자연스럽게 말하는 훈련", topics:["모음 & 자음 교정","연음 & 축약 규칙","억양 & 리듬 훈련","섀도잉 집중 훈련"] },
+  { icon:"👤", label:"1:1 프라이빗 레슨", count:148, desc:"선생님과 수강생 단 둘이 — 내 수준과 목표에 완전히 맞춘 맞춤형 영어회화 레슨", topics:["수준별 맞춤 커리큘럼","실시간 발음 & 표현 교정","내 상황에 맞는 실전 예문","매 수업 상세 피드백 노트"] },
+  { icon:"💼", label:"비즈니스 영어 (기업 출강)", count:112, desc:"삼성·LG·현대 등 국내 대기업 출강 경력 — 임원·직장인을 위한 실전 비즈니스 영어", topics:["회의 & PT 영어","원어민 파트너와 협상","이메일 & 보고서 영어","글로벌 비즈니스 에티켓"] },
+  { icon:"💬", label:"일상 영어회화", count:87, desc:"번역 없이 바로 입이 열리는 — 원어민이 실제로 쓰는 자연스러운 일상 영어회화", topics:["첫 만남 & 자기소개","감정 & 의견 표현","전화 & SNS 영어","소셜 상황 자연스럽게 대처"] },
+  { icon:"🎯", label:"발음 & 유창성 집중 교정", count:53, desc:"1:1 맞춤 발음 교정 — 원어민도 알아채는 한국인 특유의 발음 습관을 완벽하게 잡아드립니다", topics:["모음 & 자음 1:1 교정","연음 & 강세 규칙","억양 & 리듬 훈련","원어민 섀도잉 피드백"] },
 ];
 
 const results = _D.results || [
@@ -812,10 +869,10 @@ const blogPosts = _D.blogPosts || [
 ];
 
 const credentials = _D.credentials || [
-  { role:"동시통역사 출신", name:"Isabel Kim" },
-  { role:"영어회화 전문 코치", name:"HessEdU" },
+  { role:"동시통역사 출신 전문 코치", name:"Isabel Kim" },
+  { role:"삼성전자 · LG전자 · 현대자동차 출강", name:"기업 영어 강의" },
+  { role:"SK이노베이션 · 롯데 · 카카오 출강", name:"임원급 1:1 레슨" },
   { role:"7년+ 교육 경력", name:"500+ 수강생" },
-  { role:"블로그 크리에이터", name:"400+ 콘텐츠" },
 ];
 
 // ═══ RENDER ═══
