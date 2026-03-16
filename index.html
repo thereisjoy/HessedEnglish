@@ -22,6 +22,8 @@
   --text-muted: #A09284;
   --navy:  #B8916B;        /* oak replaces navy throughout */
   --navy-light: rgba(184,145,107,.12);
+  --cta:   #C47A4A;        /* warm terracotta — CTA only */
+  --cta-hover: #A86438;
   --line:  rgba(28,25,21,.08);
   --serif: 'Inter',system-ui,sans-serif;
   --sans:  'Inter',system-ui,sans-serif;
@@ -63,10 +65,10 @@ input::placeholder{color:var(--text-muted)}
 .nav-links a{font-size:14px;color:var(--text-sub);letter-spacing:-.2px;transition:color .2s}
 .nav-links a:hover{color:var(--text)}
 .nav-cta{
-  font-size:13px;font-weight:500;color:var(--bg);background:var(--text);
+  font-size:13px;font-weight:600;color:#fff;background:var(--cta);
   padding:10px 28px;border-radius:var(--r-pill);transition:all .3s;letter-spacing:-.2px;
 }
-.nav-cta:hover{background:var(--navy)}
+.nav-cta:hover{background:var(--cta-hover)}
 .nav-mobile{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--text)}
 
 /* ═══ HERO — Glass House ═══ */
@@ -142,16 +144,17 @@ input::placeholder{color:var(--text-muted)}
 .hero h1 em{font-style:normal;color:var(--navy)}
 .hero-btn{
   display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--sans);font-size:15px;font-weight:500;
-  color:var(--text);background:rgba(247,244,239,.7);
-  backdrop-filter:blur(12px);
-  border:1px solid var(--line);
-  padding:12px 32px;border-radius:var(--r-pill);
+  font-family:var(--sans);font-size:15px;font-weight:600;
+  color:#fff;background:var(--cta);
+  border:none;
+  padding:14px 36px;border-radius:var(--r-pill);
   letter-spacing:-.3px;transition:all .3s;
+  box-shadow:0 4px 20px rgba(196,122,74,.25);
 }
-.hero-btn:hover{background:var(--text);color:var(--bg);gap:12px}
+.hero-btn:hover{background:var(--cta-hover);gap:12px;box-shadow:0 6px 28px rgba(196,122,74,.35)}
 .hero-btn .arrow{font-size:18px;transition:transform .3s}
 .hero-btn:hover .arrow{transform:translate(3px,-3px)}
+.hero-sub{font-size:12px;color:var(--text-muted);margin-top:14px;letter-spacing:-.1px}
 /* scroll indicator */
 .hero-scroll{
   position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
@@ -353,8 +356,8 @@ input::placeholder{color:var(--text-muted)}
   padding:15px;border-radius:var(--r-pill);cursor:pointer;transition:all .25s;
   letter-spacing:-.2px;
 }
-.pricing-btn-primary{background:var(--bg);color:var(--text);border:none}
-.pricing-btn-primary:hover{background:var(--navy);color:var(--bg)}
+.pricing-btn-primary{background:var(--cta);color:#fff;border:none;box-shadow:0 4px 16px rgba(196,122,74,.25)}
+.pricing-btn-primary:hover{background:var(--cta-hover);color:#fff}
 .pricing-btn-secondary{background:var(--text);color:var(--bg);border:none}
 .pricing-btn-secondary:hover{background:var(--navy)}
 
@@ -375,11 +378,12 @@ input::placeholder{color:var(--text-muted)}
 .cta h2 em{font-style:italic;font-weight:300;opacity:.5}
 .cta-btn{
   display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--sans);font-size:15px;font-weight:500;
-  color:var(--text);background:var(--bg);padding:14px 36px;
+  font-family:var(--sans);font-size:15px;font-weight:600;
+  color:#fff;background:var(--cta);padding:14px 36px;
   border-radius:var(--r-pill);transition:all .3s;border:none;cursor:pointer;position:relative;z-index:1;
+  box-shadow:0 4px 20px rgba(196,122,74,.3);
 }
-.cta-btn:hover{background:var(--navy);color:var(--bg);gap:14px}
+.cta-btn:hover{background:var(--cta-hover);color:#fff;gap:14px;box-shadow:0 6px 28px rgba(196,122,74,.4)}
 .cta-proof{font-size:14px;color:rgba(247,244,239,.35);margin-top:20px;position:relative;z-index:1}
 
 /* ═══ FOOTER ═══ */
@@ -454,6 +458,43 @@ input::placeholder{color:var(--text-muted)}
   50%{transform:translateY(-7px)}
 }
 
+/* ═══ TRUST BANNER (기업 로고) ═══ */
+.trust-banner{background:var(--bg);border-bottom:1px solid var(--line);padding:48px 0;overflow:hidden}
+.trust-label{text-align:center;font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px}
+.trust-logos{
+  display:flex;align-items:center;justify-content:center;gap:clamp(32px,5vw,64px);
+  flex-wrap:wrap;opacity:.45;filter:grayscale(100%);transition:opacity .3s,filter .3s;
+}
+.trust-logos:hover{opacity:.65;filter:grayscale(50%)}
+.trust-logo{
+  font-family:var(--sans);font-size:clamp(13px,1.5vw,16px);font-weight:700;
+  letter-spacing:-.02em;color:var(--text);white-space:nowrap;
+}
+.trust-logo-lg{font-size:clamp(15px,1.8vw,19px)}
+
+/* ═══ FLOATING CTA ═══ */
+.float-cta{
+  position:fixed;bottom:0;left:0;right:0;z-index:999;
+  background:rgba(247,244,239,.92);backdrop-filter:blur(20px) saturate(180%);
+  border-top:1px solid var(--line);
+  padding:14px clamp(24px,5vw,80px);
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  transform:translateY(100%);transition:transform .5s cubic-bezier(.22,1,.36,1);
+}
+.float-cta.show{transform:translateY(0)}
+.float-cta-text{font-size:14px;color:var(--text-sub);font-weight:400;letter-spacing:-.2px}
+.float-cta-text b{color:var(--cta);font-weight:600}
+.float-cta-btn{
+  font-family:var(--sans);font-size:13px;font-weight:600;
+  color:#fff;background:var(--cta);
+  padding:10px 28px;border-radius:var(--r-pill);border:none;cursor:pointer;
+  transition:all .25s;white-space:nowrap;
+}
+.float-cta-btn:hover{background:var(--cta-hover)}
+
+/* ═══ TESTIMONIAL STARS ═══ */
+.testimonial-stars{color:var(--cta);font-size:13px;letter-spacing:1px;margin-bottom:10px}
+
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:900px){
   .courses-grid,.about-grid,.results-grid,.testimonials-grid,.pricing-grid,.blog-grid{grid-template-columns:1fr!important}
@@ -464,6 +505,9 @@ input::placeholder{color:var(--text-muted)}
   .hero-sphere-a,.hero-sphere-b,.hero-sphere-c,.hero-sphere-d,.hero-light{display:none}
   .hero-chip{display:none}
   .hero-photo{height:72%;max-height:420px}
+  .float-cta{flex-direction:column;gap:8px;padding:12px 20px}
+  .float-cta-text{font-size:12px;text-align:center}
+  .trust-logos{gap:20px}
 }
 @media(max-width:600px){
   .stats-grid{grid-template-columns:1fr}
@@ -633,9 +677,10 @@ input::placeholder{color:var(--text-muted)}
   <div class="hero-content fade-in">
     <div class="hero-brand" id="heroBrand">HessEdU · 1:1 프라이빗 영어회화</div>
     <h1 id="heroH1">말문이 트이는<br><em>1:1 레슨.</em></h1>
-    <a href="#courses" class="hero-btn" id="heroBtn">
-      영어회화 시작하기 <span class="arrow">↗</span>
+    <a href="#pricing" class="hero-btn" id="heroBtn">
+      무료 체험 신청하기 <span class="arrow">↗</span>
     </a>
+    <p class="hero-sub">지금 신청 시 <b style="color:var(--cta)">1회 무료 레슨</b> — 선착순 마감</p>
   </div>
   <div class="hero-scroll"><div class="hero-scroll-dot"></div></div>
 </section>
@@ -655,6 +700,21 @@ input::placeholder{color:var(--text-muted)}
       <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>30+</div><div class="stat-label">출강 기업</div></div>
       <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>500+</div><div class="stat-label">수강생</div></div>
       <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>97%</div><div class="stat-label">만족도</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST BANNER ═══ -->
+<section class="trust-banner fade-in">
+  <div class="container">
+    <div class="trust-label">출강 이력 — 국내 주요 기업과 함께합니다</div>
+    <div class="trust-logos">
+      <span class="trust-logo trust-logo-lg">SAMSUNG</span>
+      <span class="trust-logo trust-logo-lg">LG</span>
+      <span class="trust-logo">HYUNDAI</span>
+      <span class="trust-logo">SK</span>
+      <span class="trust-logo">LOTTE</span>
+      <span class="trust-logo">kakao</span>
     </div>
   </div>
 </section>
@@ -771,6 +831,12 @@ input::placeholder{color:var(--text-muted)}
     <p class="cta-proof" id="ctaProof">삼성·LG·현대 출강 강사 — 500+ 수강생이 선택한 1:1 영어회화 전문 플랫폼</p>
   </div>
 </section>
+
+<!-- ═══ FLOATING CTA ═══ -->
+<div class="float-cta" id="floatCta">
+  <span class="float-cta-text"><b>1회 무료 체험 레슨</b> — 삼성·LG·현대 출강 강사의 1:1 레슨을 경험해보세요</span>
+  <button class="float-cta-btn" onclick="location.href='#pricing'">무료 체험 신청 ↗</button>
+</div>
 
 <!-- ═══ FOOTER ═══ -->
 <footer class="footer">
@@ -912,6 +978,7 @@ document.getElementById('aboutCredentials').innerHTML = credentials.map(c => `
 document.getElementById('testimonialsGrid').innerHTML = testimonials.map((t,i) => `
   <div class="testimonial-card fade-in" style="transition-delay:${i*.1}s">
     <span class="testimonial-tag">${t.tag}</span>
+    <div class="testimonial-stars">★★★★★</div>
     <p class="testimonial-text">"${t.text}"</p>
     <div class="testimonial-bottom">
       <span class="testimonial-name">${t.name}</span>
@@ -1044,6 +1111,16 @@ rows.forEach((row, i) => {
 document.querySelector('.about-credentials')?.addEventListener('mouseleave', () => {
   rows.forEach(r => r.style.opacity = '1');
 });
+
+// ═══ FLOATING CTA — show after scrolling past hero ═══
+const floatCta = document.getElementById('floatCta');
+const heroSection = document.querySelector('.hero');
+if (floatCta && heroSection) {
+  const floatObs = new IntersectionObserver(([e]) => {
+    floatCta.classList.toggle('show', !e.isIntersecting);
+  }, { threshold: 0.1 });
+  floatObs.observe(heroSection);
+}
 
 })(); // end async init
 </script>
