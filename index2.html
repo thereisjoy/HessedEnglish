@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isabel English — Master English with Real-World Content</title>
+<meta name="description" content="동시통역사 출신 영어 튜터 Isabel Kim의 체계적 영어 교육 플랫폼. IELTS, Academic, Business English.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ═══ RESET ═══ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FFFFFF;--cream:#F3EFEA;--warm:#EDE8E0;
+  --text:#111111;--text-sub:#555555;--text-muted:#999999;
+  --navy:#233386;--navy-light:rgba(35,51,134,0.08);
+  --serif:'Inter',system-ui,sans-serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --max-w:1400px;--r:20px;--r-sm:12px;--r-pill:100px;
+}
+html{scroll-behavior:smooth;background:var(--bg);color:var(--text)}
+body{font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--navy);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+input{font-family:var(--sans)}
+input::placeholder{color:var(--text-muted)}
+
+/* ═══ UTILITY ═══ */
+.container{max-width:var(--max-w);margin:0 auto;padding:0 clamp(24px,5vw,80px)}
+.section-pad{padding:clamp(80px,12vw,160px) 0}
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.25,.46,.45,.94),transform .9s cubic-bezier(.25,.46,.45,.94)}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ═══ NAV ═══ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:0 clamp(24px,5vw,80px);transition:all .5s ease;
+}
+.nav.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.06)}
+.nav.hero-mode{background:transparent}
+.nav-inner{
+  max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;
+  justify-content:space-between;height:70px;
+}
+.nav-logo{font-family:var(--sans);font-size:18px;font-weight:800;letter-spacing:-.04em;transition:color .3s}
+.nav-logo b{font-weight:800;color:var(--navy)}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-size:14px;color:var(--text-sub);letter-spacing:-.2px;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{
+  font-size:13px;font-weight:500;color:#fff;background:var(--navy);
+  padding:10px 28px;border-radius:var(--r-pill);transition:all .3s;letter-spacing:-.2px;
+}
+.nav-cta:hover{background:#1a2670}
+.nav-mobile{display:none;background:none;border:none;font-size:22px;cursor:pointer}
+
+/* ═══ HERO ═══ */
+.hero{
+  height:100vh;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:#1a1510;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#2a1f14 0%,#1a2a1a 30%,#1a1510 60%,#2a2015 100%);
+  opacity:.7;
+}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.25)}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 40px}
+.hero-brand{
+  font-family:var(--sans);font-size:14px;color:rgba(255,255,255,.6);
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:32px;
+}
+.hero h1{
+  font-family:var(--sans);font-weight:800;
+  font-size:clamp(40px,7vw,96px);line-height:.95;
+  letter-spacing:-.04em;color:#fff;margin-bottom:40px;
+}
+.hero h1 em{font-style:normal;color:rgba(255,255,255,.55)}
+.hero-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--sans);font-size:16px;font-weight:500;
+  color:#fff;letter-spacing:-.3px;
+  transition:gap .3s;cursor:pointer;
+}
+.hero-btn:hover{gap:14px}
+.hero-btn .arrow{font-size:20px;transition:transform .3s}
+.hero-btn:hover .arrow{transform:translate(4px,-4px)}
+.hero-scroll{
+  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+  width:28px;height:44px;border:2px solid rgba(255,255,255,.3);
+  border-radius:14px;display:flex;justify-content:center;padding-top:8px;
+}
+.hero-scroll-dot{
+  width:4px;height:4px;background:#fff;border-radius:50%;
+  animation:scrollBounce 2s infinite;
+}
+@keyframes scrollBounce{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(16px);opacity:.3}}
+
+/* ═══ INTRO ═══ */
+.intro{background:var(--cream);text-align:center}
+.intro p{
+  font-family:var(--sans);font-size:clamp(22px,3.5vw,40px);font-weight:700;
+  line-height:1.3;letter-spacing:-.03em;max-width:800px;margin:0 auto;color:var(--text);
+}
+.intro p em{font-style:normal;color:var(--navy)}
+
+/* ═══ STATS ═══ */
+.stats{background:var(--bg);border-bottom:1px solid rgba(0,0,0,.06)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(0,0,0,.06);border-radius:var(--r);overflow:hidden}
+.stat-item{background:var(--bg);padding:48px 32px;text-align:center}
+.stat-value{font-family:var(--sans);font-size:clamp(32px,4vw,56px);font-weight:800;letter-spacing:-.04em;margin-bottom:8px}
+.stat-label{font-size:13px;color:var(--text-muted);letter-spacing:.5px;text-transform:uppercase}
+.stat-dot{color:var(--navy);margin-right:4px}
+
+/* ═══ COURSES ═══ */
+.courses{background:var(--bg)}
+.courses-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;flex-wrap:wrap;gap:20px}
+.courses-header h2{font-family:var(--sans);font-size:clamp(40px,7vw,96px);font-weight:800;letter-spacing:-.04em;line-height:.95}
+.courses-header h2 em{font-style:normal;color:var(--navy)}
+.courses-link{font-size:14px;color:var(--navy);display:flex;align-items:center;gap:6px;transition:gap .2s}
+.courses-link:hover{gap:10px}
+
+.courses-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.course-card{
+  background:var(--cream);border-radius:var(--r);padding:48px;
+  position:relative;overflow:hidden;cursor:pointer;
+  transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s;
+}
+.course-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.course-card-num{
+  font-family:var(--serif);font-size:72px;color:rgba(0,0,0,.04);
+  position:absolute;top:20px;right:32px;line-height:1;
+}
+.course-card-icon{font-size:36px;margin-bottom:20px}
+.course-card h3{font-family:var(--sans);font-size:28px;font-weight:800;letter-spacing:-.03em;margin-bottom:12px}
+.course-card-count{
+  font-size:12px;color:var(--navy);background:var(--navy-light);
+  padding:4px 12px;border-radius:var(--r-pill);display:inline-block;margin-bottom:16px;
+}
+.course-card p{font-size:15px;color:var(--text-sub);line-height:1.7;margin-bottom:28px}
+.course-topics{display:flex;flex-direction:column;gap:10px}
+.course-topic{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-sub)}
+.course-topic::before{content:'';width:16px;height:1px;background:var(--navy);flex-shrink:0}
+
+/* ═══ RESULTS ═══ */
+.results{background:var(--cream)}
+.results-header{margin-bottom:60px}
+.results-header h2{font-family:var(--sans);font-size:clamp(40px,7vw,96px);font-weight:800;letter-spacing:-.04em;line-height:.95;margin-bottom:16px}
+.results-header h2 em{font-style:normal;color:var(--navy)}
+.results-header p{font-size:16px;color:var(--text-sub);max-width:500px;line-height:1.6}
+
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.result-card{background:var(--bg);border-radius:var(--r);padding:48px;text-align:center;transition:transform .3s}
+.result-card:hover{transform:translateY(-4px)}
+.result-card-value{font-family:var(--sans);font-size:clamp(40px,5vw,64px);font-weight:800;letter-spacing:-.04em;color:var(--navy);margin-bottom:4px}
+.result-card-unit{font-size:14px;color:var(--text-muted);margin-bottom:20px}
+.result-card-bar{height:120px;display:flex;align-items:flex-end;gap:4px;justify-content:center;margin-bottom:16px}
+.result-bar{width:20px;border-radius:4px 4px 0 0;background:var(--cream);transition:height .6s cubic-bezier(.25,.46,.45,.94)}
+.result-bar.active{background:var(--navy)}
+.result-card-caption{font-size:12px;color:var(--text-muted);letter-spacing:.5px;text-transform:uppercase}
+
+/* ═══ ABOUT ═══ */
+.about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-image{
+  background:var(--cream);border-radius:var(--r);aspect-ratio:4/5;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  position:relative;
+}
+.about-image-placeholder{
+  font-family:var(--serif);font-size:120px;color:rgba(0,0,0,.06);
+  user-select:none;
+}
+.about-label{font-size:12px;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.about h2{font-family:var(--sans);font-size:clamp(40px,6vw,80px);font-weight:800;letter-spacing:-.04em;line-height:.95;margin-bottom:32px}
+.about h2 em{font-style:normal;color:var(--navy)}
+.about-text{font-size:16px;color:var(--text-sub);line-height:1.8;margin-bottom:32px}
+.about-tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.about-tag{
+  font-size:13px;color:var(--text-sub);padding:8px 18px;
+  border:1px solid rgba(0,0,0,.1);border-radius:var(--r-pill);
+}
+.about-contact{font-size:14px;color:var(--navy);display:flex;align-items:center;gap:6px}
+.about-credentials{margin-top:40px;display:flex;flex-direction:column;gap:0}
+.credential-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:16px 0;border-bottom:1px solid rgba(0,0,0,.06);
+  transition:opacity .3s;cursor:default;
+}
+.credential-row:hover{opacity:1!important}
+.credential-role{font-size:13px;color:var(--text-muted)}
+.credential-name{font-family:var(--sans);font-size:clamp(18px,2.5vw,28px);font-weight:800;letter-spacing:-.03em}
+
+/* ═══ TESTIMONIALS ═══ */
+.testimonials{background:var(--cream)}
+.testimonials-header{margin-bottom:60px}
+.testimonials-header h2{font-family:var(--sans);font-size:clamp(40px,7vw,96px);font-weight:800;letter-spacing:-.04em;line-height:.95}
+.testimonials-header h2 em{font-style:normal;color:var(--navy)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testimonial-card{background:var(--bg);border-radius:var(--r);padding:40px;display:flex;flex-direction:column}
+.testimonial-tag{
+  font-size:11px;color:var(--navy);background:var(--navy-light);
+  padding:4px 10px;border-radius:var(--r-pill);display:inline-block;
+  align-self:flex-start;margin-bottom:20px;
+}
+.testimonial-text{font-family:var(--sans);font-size:16px;line-height:1.7;letter-spacing:-.01em;flex:1;margin-bottom:28px;color:var(--text-sub)}
+.testimonial-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(0,0,0,.06);padding-top:20px}
+.testimonial-name{font-size:14px;font-weight:500}
+.testimonial-score{font-size:13px;color:var(--text-muted)}
+.testimonial-score b{color:var(--navy);font-weight:600}
+
+/* ═══ BLOG ═══ */
+.blog{background:var(--bg)}
+.blog-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:20px}
+.blog-header h2{font-family:var(--sans);font-size:clamp(40px,6vw,80px);font-weight:800;letter-spacing:-.04em;line-height:.95}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.blog-card{
+  border-radius:var(--r);overflow:hidden;transition:transform .4s;
+  background:var(--cream);
+}
+.blog-card:hover{transform:translateY(-4px)}
+.blog-card-img{
+  height:200px;background:var(--warm);position:relative;
+  display:flex;align-items:flex-end;padding:20px;
+}
+.blog-card-cat{
+  font-size:11px;color:#fff;background:var(--navy);
+  padding:4px 12px;border-radius:var(--r-pill);
+}
+.blog-card-body{padding:28px}
+.blog-card-date{font-size:12px;color:var(--text-muted);margin-bottom:8px}
+.blog-card h3{font-family:var(--sans);font-size:17px;font-weight:700;letter-spacing:-.02em;line-height:1.4}
+
+/* ═══ PRICING ═══ */
+.pricing{background:var(--cream)}
+.pricing-header{text-align:center;margin-bottom:60px}
+.pricing-header h2{font-family:var(--sans);font-size:clamp(40px,7vw,96px);font-weight:800;letter-spacing:-.04em;line-height:.95;margin-bottom:12px}
+.pricing-header h2 em{font-style:normal;color:var(--navy)}
+.pricing-header p{font-size:14px;color:var(--text-muted)}
+.pricing-header p a{color:var(--navy)}
+.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:880px;margin:0 auto}
+.pricing-card{background:var(--bg);border-radius:var(--r);padding:52px;position:relative;overflow:hidden}
+.pricing-card.highlight{border:2px solid var(--navy)}
+.pricing-badge{
+  position:absolute;top:24px;right:24px;font-size:11px;
+  color:#fff;background:var(--navy);padding:4px 14px;border-radius:var(--r-pill);
+}
+.pricing-card h3{font-family:var(--sans);font-size:24px;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
+.pricing-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px}
+.pricing-price{font-family:var(--sans);font-size:48px;font-weight:800;letter-spacing:-.04em;margin-bottom:32px}
+.pricing-unit{font-size:16px;color:var(--text-muted);font-family:var(--sans);letter-spacing:0}
+.pricing-features{display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
+.pricing-feature{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-sub)}
+.pricing-feature::before{content:'—';color:var(--navy);font-weight:500}
+.pricing-btn{
+  width:100%;font-family:var(--sans);font-size:14px;font-weight:500;
+  padding:16px;border-radius:var(--r-pill);cursor:pointer;transition:all .3s;
+  letter-spacing:-.2px;
+}
+.pricing-btn-primary{background:var(--navy);color:#fff;border:none}
+.pricing-btn-primary:hover{background:#1a2670}
+.pricing-btn-secondary{background:transparent;color:var(--text);border:1px solid rgba(0,0,0,.15)}
+.pricing-btn-secondary:hover{background:var(--text);color:#fff}
+
+/* ═══ CTA ═══ */
+.cta{
+  background:var(--navy);color:#fff;text-align:center;
+  padding:clamp(80px,12vw,140px) 0;
+}
+.cta h2{font-family:var(--sans);font-size:clamp(40px,8vw,120px);font-weight:800;letter-spacing:-.04em;line-height:.95;margin-bottom:32px}
+.cta h2 em{font-style:normal;opacity:.6}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--sans);font-size:15px;font-weight:500;
+  color:var(--navy);background:#fff;padding:14px 36px;
+  border-radius:var(--r-pill);transition:all .3s;border:none;cursor:pointer;
+}
+.cta-btn:hover{background:var(--cream);gap:14px}
+.cta-proof{font-size:14px;color:rgba(255,255,255,.5);margin-top:20px}
+
+/* ═══ FOOTER ═══ */
+.footer{padding:60px 0;border-top:1px solid rgba(0,0,0,.06)}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px;margin-bottom:80px}
+.footer-newsletter p{font-size:14px;color:var(--text-sub);margin-bottom:16px;max-width:300px;line-height:1.6}
+.footer-input{display:flex;border:1px solid rgba(0,0,0,.12);border-radius:var(--r-pill);overflow:hidden}
+.footer-input input{
+  flex:1;font-size:14px;padding:14px 20px;border:none;background:transparent;
+  outline:none;min-width:200px;
+}
+.footer-input button{
+  font-size:16px;background:none;border:none;padding:14px 20px;cursor:pointer;
+  color:var(--navy);transition:transform .2s;
+}
+.footer-input button:hover{transform:translate(2px,-2px)}
+.footer-links{display:flex;gap:60px}
+.footer-col-title{font-size:11px;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.footer-col a{display:block;font-size:14px;color:var(--text-sub);padding:4px 0;transition:color .2s}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:32px;border-top:1px solid rgba(0,0,0,.06)}
+.footer-copy{font-size:13px;color:var(--text-muted)}
+.footer-legal{display:flex;gap:24px}
+.footer-legal a{font-size:13px;color:var(--text-muted);transition:color .2s}
+.footer-legal a:hover{color:var(--text)}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:900px){
+  .courses-grid,.about-grid,.results-grid,.testimonials-grid,.pricing-grid,.blog-grid{grid-template-columns:1fr!important}
+  .nav-links{display:none!important}
+  .nav-mobile{display:block!important}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-links{flex-direction:column;gap:24px}
+}
+@media(max-width:600px){
+  .stats-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav hero-mode" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Isabel <b>English.</b></a>
+    <div class="nav-links">
+      <a href="#courses">Courses</a>
+      <a href="#results">Results</a>
+      <a href="#about">About</a>
+      <a href="#blog">Blog</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#pricing" class="nav-cta">Start Learning</a>
+    </div>
+    <button class="nav-mobile" onclick="this.textContent=this.textContent==='☰'?'✕':'☰';document.querySelector('.nav-links').style.display=this.textContent==='✕'?'flex':'none'">☰</button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-in">
+    <div class="hero-brand">Isabel Kim · English Education</div>
+    <h1>Isabel English는 7년간의 블로그 콘텐츠를 <em>체계적 커리큘럼</em>으로 전환한 영어 교육 플랫폼입니다.</h1>
+    <a href="#courses" class="hero-btn">
+      Explore Isabel English <span class="arrow">↗</span>
+    </a>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-dot"></div></div>
+</section>
+
+<!-- ═══ INTRO ═══ -->
+<section class="intro section-pad">
+  <div class="container fade-in">
+    <p>IELTS, Academic Writing, Business English — <em>당신이 필요한 영어,</em> 여기에 다 있습니다.</p>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<section class="stats" style="padding:0">
+  <div class="container" style="padding-top:80px;padding-bottom:80px">
+    <div class="stats-grid fade-in">
+      <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>400+</div><div class="stat-label">학습 콘텐츠</div></div>
+      <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>7년+</div><div class="stat-label">교육 경력</div></div>
+      <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>500+</div><div class="stat-label">수강생</div></div>
+      <div class="stat-item"><div class="stat-value"><span class="stat-dot">•</span>97%</div><div class="stat-label">만족도</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COURSES ═══ -->
+<section id="courses" class="courses section-pad">
+  <div class="container">
+    <div class="courses-header fade-in">
+      <h2>Our <em>Courses</em></h2>
+      <a href="#" class="courses-link">All Courses ↗</a>
+    </div>
+    <div class="courses-grid" id="coursesGrid"></div>
+  </div>
+</section>
+
+<!-- ═══ RESULTS ═══ -->
+<section id="results" class="results section-pad">
+  <div class="container">
+    <div class="results-header fade-in">
+      <h2>Proven <em>Results</em></h2>
+      <p>데이터로 증명하는 학습 효과. 수강생들의 실제 성과입니다.</p>
+    </div>
+    <div class="results-grid" id="resultsGrid"></div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="about section-pad">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image fade-in">
+        <span class="about-image-placeholder">IK</span>
+      </div>
+      <div class="fade-in" style="transition-delay:.2s">
+        <div class="about-label">About the instructor</div>
+        <h2>Meet <em>Isabel Kim</em></h2>
+        <p class="about-text">안녕하세요, Isabel Kim입니다. 동시통역사로 시작해 영어 교육에 열정을 쏟고 있습니다. 2019년부터 시작한 블로그에 400편 이상의 영어 학습 콘텐츠를 쌓아왔고, 이제 그 노하우를 체계적인 커리큘럼으로 제공합니다.</p>
+        <div class="about-tags">
+          <span class="about-tag">IELTS</span>
+          <span class="about-tag">Academic Writing</span>
+          <span class="about-tag">Business English</span>
+          <span class="about-tag">동시통역</span>
+        </div>
+        <div class="about-credentials" id="aboutCredentials"></div>
+        <div class="about-contact" style="margin-top:24px">✉ isabella.kim0722@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="testimonials section-pad">
+  <div class="container">
+    <div class="testimonials-header fade-in">
+      <h2>Student <em>Reviews</em></h2>
+    </div>
+    <div class="testimonials-grid" id="testimonialsGrid"></div>
+  </div>
+</section>
+
+<!-- ═══ BLOG ═══ -->
+<section id="blog" class="blog section-pad">
+  <div class="container">
+    <div class="blog-header fade-in">
+      <h2>Recent Posts</h2>
+      <a href="https://blog.naver.com/isabelkim722" target="_blank" class="courses-link">All Posts ↗</a>
+    </div>
+    <div class="blog-grid" id="blogGrid"></div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section id="pricing" class="pricing section-pad">
+  <div class="container">
+    <div class="pricing-header fade-in">
+      <h2>Simple <em>Pricing</em></h2>
+      <p>궁금한 점이 있으시면 <a href="mailto:isabella.kim0722@gmail.com">여기로 문의하세요</a>.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card highlight fade-in">
+        <div class="pricing-badge">추천</div>
+        <h3>Premium</h3>
+        <div class="pricing-desc">체계적 학습을 원하는 분</div>
+        <div class="pricing-price">₩29,900<span class="pricing-unit"> /월</span></div>
+        <div class="pricing-features">
+          <div class="pricing-feature">전 강좌 무제한 접근</div>
+          <div class="pricing-feature">1:1 맞춤 피드백</div>
+          <div class="pricing-feature">원어민 첨삭 서비스</div>
+          <div class="pricing-feature">주간 학습 리포트</div>
+          <div class="pricing-feature">커뮤니티 접근</div>
+        </div>
+        <button class="pricing-btn pricing-btn-primary">14일 무료 체험</button>
+      </div>
+      <div class="pricing-card fade-in" style="transition-delay:.15s">
+        <h3>Basic</h3>
+        <div class="pricing-desc">가볍게 시작하는 영어 학습</div>
+        <div class="pricing-price">무료</div>
+        <div class="pricing-features">
+          <div class="pricing-feature">기초 강좌 5개</div>
+          <div class="pricing-feature">주간 퀴즈</div>
+          <div class="pricing-feature">커뮤니티 접근</div>
+        </div>
+        <button class="pricing-btn pricing-btn-secondary">시작하기</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta">
+  <div class="container fade-in">
+    <h2>Start Your <em>Journey</em><br>Today.</h2>
+    <button class="cta-btn" onclick="location.href='#pricing'">무료로 시작하기 <span>↗</span></button>
+    <p class="cta-proof">500+ 수강생이 선택한 영어 교육 플랫폼</p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-newsletter">
+        <a href="#" class="nav-logo" style="display:block;margin-bottom:20px;font-size:18px">Isabel <b>English.</b></a>
+        <p>주간 영어 학습 팁을 받아보세요.</p>
+        <div class="footer-input">
+          <input type="email" placeholder="Email Address">
+          <button>↗</button>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-title">Navigation</div>
+          <a href="#courses">Courses</a><a href="#results">Results</a>
+          <a href="#about">About</a><a href="#blog">Blog</a><a href="#pricing">Pricing</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Social</div>
+          <a href="https://blog.naver.com/isabelkim722" target="_blank">Blog (Naver)</a>
+          <a href="#">Instagram</a><a href="#">KakaoTalk</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Contact</div>
+          <a href="mailto:isabella.kim0722@gmail.com">이메일 문의</a>
+          <a href="#">카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">2026 © HessEDU. Beautifully Imperfect.</span>
+      <div class="footer-legal">
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══ DATA ═══
+const courses = [
+  { icon:"🎙️", label:"IELTS Speaking", count:236, desc:"기출 주제별 모범답안과 핵심 전략으로 Speaking 7.0+ 달성", topics:["Part 1 일상 주제","Part 2 큐카드 전략","Part 3 심화 토론","발음 & 유창성 훈련"] },
+  { icon:"✍️", label:"IELTS Writing", count:259, desc:"Task 1 & Task 2 완벽 분석, 실전 에세이 구조 마스터", topics:["Task 1 데이터 분석","Task 2 에세이 구조","밴드별 채점 기준","고급 표현 & 문법"] },
+  { icon:"📚", label:"Academic Writing", count:22, desc:"논문, 리포트, 학술 에세이의 격식 있는 영어 작문", topics:["논문 구조 & 형식","학술 어휘 활용","인용 & 참조","비판적 분석 작문"] },
+  { icon:"💼", label:"Business English", count:18, desc:"비즈니스 이메일부터 프레젠테이션까지 실무 영어 완성", topics:["비즈니스 이메일","회의 영어","프레젠테이션 스킬","협상 & 네트워킹"] },
+];
+
+const results = [
+  { value:"+1.5", unit:"밴드 평균 향상", caption:"Score Improvement", chart:[30,42,55,63,72,80,87,92] },
+  { value:"97%", unit:"수강생 만족도", caption:"Satisfaction Rate", chart:[85,88,90,92,94,95,96,97] },
+  { value:"89%", unit:"코스 완주율", caption:"Completion Rate", chart:[65,70,75,78,82,85,87,89] },
+];
+
+const testimonials = [
+  { name:"김서연", score:"7.5", before:"6.0", text:"Isabel 선생님 덕분에 3개월 만에 Speaking 7.5 달성! 체계적인 피드백이 정말 큰 도움이 되었어요.", tag:"Speaking" },
+  { name:"이준호", score:"8.0", before:"6.5", text:"Writing Task 2에서 항상 막혔는데, 에세이 구조를 확실히 잡아주셔서 자신감이 생겼습니다.", tag:"Writing" },
+  { name:"박민지", score:"7.0", before:"5.5", text:"유학 준비하면서 Academic Writing도 함께 배웠는데, 실제 대학 과제에서 바로 활용할 수 있었어요.", tag:"Academic" },
+];
+
+const blogPosts = [
+  { title:"IELTS Speaking Part 2: Describe a Time You Helped Someone", date:"2024.06", cat:"Speaking" },
+  { title:"Task 2 Essay Structure: To What Extent Do You Agree?", date:"2024.05", cat:"Writing" },
+  { title:"비즈니스 이메일에서 자주 쓰는 영어 표현 20가지", date:"2024.04", cat:"Business" },
+  { title:"IELTS Writing Task 1: Line Graph 분석 완벽 가이드", date:"2024.03", cat:"Writing" },
+  { title:"영어 면접 준비: 자기소개부터 마무리까지", date:"2024.02", cat:"Business" },
+  { title:"IELTS Speaking Part 3: Education 주제 심화 답변", date:"2024.01", cat:"Speaking" },
+];
+
+const credentials = [
+  { role:"동시통역사", name:"Isabel Kim" },
+  { role:"영어 전문 튜터", name:"HessEDU" },
+  { role:"IELTS 전문강사", name:"7년+ 경력" },
+  { role:"블로그 크리에이터", name:"400+ 포스트" },
+];
+
+// ═══ RENDER ═══
+document.getElementById('coursesGrid').innerHTML = courses.map((c,i) => `
+  <div class="course-card fade-in" style="transition-delay:${i*.1}s">
+    <div class="course-card-num">0${i+1}</div>
+    <div class="course-card-icon">${c.icon}</div>
+    <span class="course-card-count">${c.count}개 콘텐츠</span>
+    <h3>${c.label}</h3>
+    <p>${c.desc}</p>
+    <div class="course-topics">
+      ${c.topics.map(t => `<div class="course-topic">${t}</div>`).join('')}
+    </div>
+  </div>
+`).join('');
+
+document.getElementById('resultsGrid').innerHTML = results.map((r,i) => {
+  const max = Math.max(...r.chart);
+  return `
+  <div class="result-card fade-in" style="transition-delay:${i*.15}s">
+    <div class="result-card-value">${r.value}</div>
+    <div class="result-card-unit">${r.unit}</div>
+    <div class="result-card-bar">
+      ${r.chart.map((v,j) => `<div class="result-bar ${j===r.chart.length-1?'active':''}" style="height:${(v/max)*100}%"></div>`).join('')}
+    </div>
+    <div class="result-card-caption">${r.caption}</div>
+  </div>`;
+}).join('');
+
+document.getElementById('aboutCredentials').innerHTML = credentials.map(c => `
+  <div class="credential-row">
+    <span class="credential-role">${c.role}</span>
+    <span class="credential-name">${c.name}</span>
+  </div>
+`).join('');
+
+document.getElementById('testimonialsGrid').innerHTML = testimonials.map((t,i) => `
+  <div class="testimonial-card fade-in" style="transition-delay:${i*.1}s">
+    <span class="testimonial-tag">${t.tag}</span>
+    <p class="testimonial-text">"${t.text}"</p>
+    <div class="testimonial-bottom">
+      <span class="testimonial-name">${t.name}</span>
+      <span class="testimonial-score">${t.before} → <b>${t.score}</b></span>
+    </div>
+  </div>
+`).join('');
+
+document.getElementById('blogGrid').innerHTML = blogPosts.slice(0,3).map((p,i) => `
+  <a href="#" class="blog-card fade-in" style="transition-delay:${i*.1}s">
+    <div class="blog-card-img"><span class="blog-card-cat">${p.cat}</span></div>
+    <div class="blog-card-body">
+      <div class="blog-card-date">${p.date}</div>
+      <h3>${p.title}</h3>
+    </div>
+  </a>
+`).join('');
+
+// ═══ SCROLL ANIMATIONS ═══
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+function observeAll(){ document.querySelectorAll('.fade-in').forEach(el => obs.observe(el)); }
+observeAll();
+new MutationObserver(observeAll).observe(document.body, { childList:true, subtree:true });
+
+// ═══ NAV SCROLL ═══
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY > 100;
+  nav.classList.toggle('scrolled', scrolled);
+  nav.classList.toggle('hero-mode', !scrolled);
+  // Update logo color
+  const logo = nav.querySelector('.nav-logo');
+  if (logo) logo.style.color = scrolled ? '' : '#fff';
+  nav.querySelectorAll('.nav-links > a:not(.nav-cta)').forEach(a => {
+    a.style.color = scrolled ? '' : 'rgba(255,255,255,.7)';
+  });
+}, { passive:true });
+// Init
+window.dispatchEvent(new Event('scroll'));
+
+// ═══ ABOUT HOVER ═══
+const rows = document.querySelectorAll('.credential-row');
+rows.forEach((row, i) => {
+  row.addEventListener('mouseenter', () => {
+    rows.forEach((r, j) => r.style.opacity = j === i ? '1' : '.4');
+  });
+});
+document.querySelector('.about-credentials')?.addEventListener('mouseleave', () => {
+  rows.forEach(r => r.style.opacity = '1');
+});
+</script>
+</body>
+</html>

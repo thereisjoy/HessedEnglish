@@ -261,6 +261,212 @@ input::placeholder{color:var(--text-muted)}
 .cta-proof{font-size:14px;color:var(--text-muted);margin-top:20px}
 
 /* ═══ FOOTER ═══ */
+.footer{border-top:1px solid var(--border);padding:80px 0}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:40px;margin-bottom:80px}
+.footer-col-title{font-family:var(--mono);font-size:11px;color:var(--text-muted);letter-spacing:2px;margin-bottom:20px}
+.footer-col a{display:block;font-size:14px;color:var(--text-sub);padding:6px 0;transition:color .2s}
+.footer-col a:hover{color:var(--text)}
+.footer-newsletter p{font-size:14px;color:var(--text-sub);margin-bottom:16px;line-height:1.6}
+.footer-input{display:flex}
+.footer-input input{
+  flex:1;font-size:13px;background:var(--card);border:1px solid var(--border);
+  border-right:none;border-radius:var(--r-pill) 0 0 var(--r-pill);
+  padding:12px 18px;color:var(--text);outline:none;
+}
+.footer-input button{
+  font-size:13px;font-weight:600;background:var(--accent);border:none;color:#fff;
+  padding:12px 20px;border-radius:0 var(--r-pill) var(--r-pill) 0;cursor:pointer;
+}
+.footer-brand{text-align:center;padding-top:60px;border-top:1px solid var(--border)}
+.footer-logo{font-weight:700;font-size:clamp(40px,8vw,120px);letter-spacing:.1em;color:rgba(255,255,255,.04);user-select:none}
+.footer-logo b{color:rgba(247,82,27,.15)}
+.footer-copy{font-family:var(--mono);font-size:12px;color:var(--text-muted);margin-top:16px}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:900px){
+  .courses-grid,.results-grid,.about-grid{grid-template-columns:1fr!important}
+  .nav-links{display:none!important}
+  .nav-mobile{display:block!important}
+  .pricing-grid{max-width:100%}
+}
+@media(max-width:600px){
+  .section-pad{padding:80px 0}
+  .hero{padding-bottom:40px}
+  .blog-grid{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Isabel<b>*</b></a>
+    <div class="nav-links">
+      <a href="#courses">Courses</a>
+      <a href="#results">Results</a>
+      <a href="#about">About</a>
+      <a href="#blog">Blog</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#pricing" class="nav-cta">Start Learning</a>
+    </div>
+    <button class="nav-mobile" onclick="document.querySelector('.nav-links').style.display=this.dataset.open?'none':'flex';this.dataset.open=this.dataset.open?'':'1';this.textContent=this.dataset.open?'✕':'☰'">☰</button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero container">
+  <div class="hero-glow"></div>
+  <div style="position:relative">
+    <p class="hero-sub fade-in">동시통역사 출신 영어 튜터 — Since 2019</p>
+    <h1 class="fade-in" style="transition-delay:.2s">MASTER<br><span>ENGLISH</span></h1>
+    <div class="hero-bottom fade-in" style="transition-delay:.4s">
+      <p class="hero-desc">7년간 블로그에서 검증된 400+개의<br>영어 학습 콘텐츠를 체계적 커리큘럼으로.</p>
+      <a href="#courses" class="hero-scroll">SCROLL ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VALUE PROPOSITION ═══ -->
+<section class="value-prop container">
+  <div class="fade-in">
+    <p><span>블로그에서 시작된 영어 교육이</span> 체계적인 학습 플랫폼으로 진화했습니다. <span>IELTS, Academic, Business —</span> 당신이 필요한 영어, 여기에 다 있습니다.</p>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<section class="stats container">
+  <div class="stats-grid">
+    <div class="stat-item fade-in"><div class="stat-value">400+</div><div class="stat-label">학습 콘텐츠</div></div>
+    <div class="stat-item fade-in" style="transition-delay:.1s"><div class="stat-value">7년+</div><div class="stat-label">교육 경력</div></div>
+    <div class="stat-item fade-in" style="transition-delay:.2s"><div class="stat-value">500+</div><div class="stat-label">수강생</div></div>
+    <div class="stat-item fade-in" style="transition-delay:.3s"><div class="stat-value">97%</div><div class="stat-label">만족도</div></div>
+  </div>
+</section>
+
+<!-- ═══ COURSES ═══ -->
+<section id="courses" class="section-pad container">
+  <div class="section-header fade-in">
+    <h2 class="section-title">LEARN ENGLISH<br><span>YOUR WAY</span></h2>
+    <span class="section-label">COURSES</span>
+  </div>
+  <div class="courses-grid">
+    <div class="fade-in" style="transition-delay:.2s" id="courseTabs"></div>
+    <div class="fade-in" style="transition-delay:.4s" id="courseCard"></div>
+  </div>
+</section>
+
+<!-- ═══ RESULTS ═══ -->
+<section id="results" class="section-pad results">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2 class="section-title">PROVEN<br><span>RESULTS</span></h2>
+      <span class="section-label">DATA</span>
+    </div>
+    <div class="results-grid">
+      <div class="fade-in" style="transition-delay:.2s">
+        <div id="resultTabs"></div>
+        <div class="result-desc" id="resultDesc"></div>
+      </div>
+      <div class="fade-in" style="transition-delay:.4s" id="resultChart"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="section-pad container">
+  <div class="section-header fade-in">
+    <h2 class="section-title">MEET YOUR<br><span>INSTRUCTOR</span></h2>
+    <span class="section-label">ABOUT</span>
+  </div>
+  <div class="about-grid">
+    <div class="fade-in" style="transition-delay:.2s" id="aboutRows"></div>
+    <div class="fade-in" style="transition-delay:.4s">
+      <div class="about-card">
+        <p>안녕하세요, Isabel Kim입니다. 동시통역사로 시작해 영어 교육에 열정을 쏟고 있습니다. 2019년부터 시작한 블로그에 400편 이상의 영어 학습 콘텐츠를 쌓아왔고, 이제 그 노하우를 체계적인 커리큘럼으로 제공합니다.</p>
+        <div class="about-tags">
+          <span class="about-tag">IELTS</span>
+          <span class="about-tag">Academic</span>
+          <span class="about-tag">Business</span>
+          <span class="about-tag">통역</span>
+        </div>
+        <div class="about-email">✉️ isabella.kim0722@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="section-pad testimonials">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2 class="section-title">STUDENT<br><span>REVIEWS</span></h2>
+      <span class="section-label">TESTIMONIALS</span>
+    </div>
+    <div class="testimonials-grid" id="testimonials"></div>
+  </div>
+</section>
+
+<!-- ═══ BLOG ═══ -->
+<section id="blog" class="section-pad container">
+  <div class="section-header fade-in">
+    <h2 class="section-title">FROM THE<br><span>BLOG</span></h2>
+    <span class="section-label">BLOG</span>
+  </div>
+  <div class="blog-grid" id="blogGrid"></div>
+  <div class="blog-more fade-in">
+    <a href="https://blog.naver.com/isabelkim722" target="_blank" rel="noopener">전체 블로그 보기 →</a>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section id="pricing" class="section-pad pricing">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2 class="section-title">SIMPLE<br><span>PRICING</span></h2>
+      <span class="section-label">PRICING</span>
+    </div>
+    <p class="pricing-note fade-in">궁금한 점이 있으시면 <a href="mailto:isabella.kim0722@gmail.com">여기로 문의하세요</a>.</p>
+    <div class="pricing-grid">
+      <!-- Premium -->
+      <div class="pricing-card highlight fade-in">
+        <div class="pricing-bar"></div>
+        <h3>Premium</h3>
+        <div class="pricing-desc">체계적 학습을 원하는 분</div>
+        <div class="pricing-price">₩29,900<span class="pricing-unit">/월</span></div>
+        <div class="pricing-feature"><span class="pricing-star">★</span>전 강좌 무제한 접근</div>
+        <div class="pricing-feature"><span class="pricing-star">★</span>1:1 맞춤 피드백</div>
+        <div class="pricing-feature"><span class="pricing-star">★</span>원어민 첨삭 서비스</div>
+        <div class="pricing-feature"><span class="pricing-star">★</span>주간 학습 리포트</div>
+        <div class="pricing-feature"><span class="pricing-star">★</span>커뮤니티 접근</div>
+        <button class="btn-accent">14일 무료 체험</button>
+      </div>
+      <!-- Basic -->
+      <div class="pricing-card fade-in" style="transition-delay:.15s">
+        <h3>Basic</h3>
+        <div class="pricing-desc">가볍게 시작하는 영어 학습</div>
+        <div class="pricing-price">무료</div>
+        <div class="pricing-feature"><span class="pricing-star">★</span>기초 강좌 5개</div>
+        <div class="pricing-feature"><span class="pricing-star">★</span>주간 퀴즈</div>
+        <div class="pricing-feature"><span class="pricing-star">★</span>커뮤니티 접근</div>
+        <button class="btn-ghost">시작하기</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="section-pad cta container">
+  <h2 class="fade-in">START YOUR<br><span>JOURNEY.</span></h2>
+  <div class="cta-buttons fade-in" style="transition-delay:.2s">
+    <a href="#pricing" class="btn-primary">★ 무료로 시작하기</a>
+  </div>
+  <p class="cta-proof fade-in" style="transition-delay:.3s">500+ 수강생이 선택한 영어 교육 플랫폼</p>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
