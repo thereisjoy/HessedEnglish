@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isabel English — Fluency Cultivated Slowly</title>
+<meta name="description" content="동시통역사 출신 Isabel Kim. 섬세하고 체계적인 IELTS · Academic · Business 영어.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════════
+   GLASS HOUSE — design system
+   palette: warm light / oak / near-white
+══════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:    #F7F4EF;   /* warm off-white */
+  --panel: #EFEBE4;   /* glass panel tint */
+  --warm:  #E7E1D8;   /* deeper warm */
+  --oak:   #B8916B;   /* warm oak wood */
+  --oak-l: rgba(184,145,107,.12);
+  --text:  #1C1915;   /* warm near-black */
+  --sub:   #6B6158;   /* warm grey */
+  --muted: #A09284;
+  --line:  rgba(28,25,21,.08);
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --max: 1360px;
+  --r: 16px;
+}
+
+html{background:var(--bg);color:var(--text);scroll-behavior:smooth}
+body{font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--bg)}
+::selection{background:var(--oak);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ══ FADE IN ══ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1)}
+.reveal.show{opacity:1;transform:none}
+
+/* ══════════════════════════════════════════
+   NAV
+══════════════════════════════════════════ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  padding:0 clamp(24px,4vw,72px);
+  transition:background .5s, backdrop-filter .5s, border-color .5s;
+  border-bottom: 1px solid transparent;
+}
+.nav.solid{
+  background:rgba(247,244,239,.88);
+  backdrop-filter:blur(24px) saturate(180%);
+  border-bottom-color:var(--line);
+}
+.nav-inner{
+  max-width:var(--max);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;height:68px;
+}
+.nav-logo{
+  font-size:15px;font-weight:600;letter-spacing:-.02em;
+  display:flex;align-items:center;gap:8px;
+}
+.nav-logo-dot{
+  width:8px;height:8px;background:var(--oak);border-radius:50%;
+  display:inline-block;
+}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:13px;color:var(--sub);letter-spacing:-.01em;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{
+  font-size:13px;font-weight:500;letter-spacing:-.01em;
+  color:var(--bg);background:var(--text);
+  padding:9px 24px;border-radius:100px;
+  transition:background .25s;
+}
+.nav-cta:hover{background:var(--oak)}
+
+/* ══════════════════════════════════════════
+   HERO — GLASS HOUSE
+══════════════════════════════════════════ */
+.hero{
+  min-height:100vh;position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;
+  padding:0 clamp(24px,4vw,72px) 80px;
+  background:var(--bg);
+}
+
+/* ─ glass architecture background ─ */
+.hero-arch{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;
+}
+
+/* big warm gradient sky */
+.hero-sky{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 0%, #EDE5D8 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 10% 50%, #E8DDD0 0%, transparent 60%),
+    linear-gradient(175deg, #F0EBE3 0%, #F7F4EF 55%, #EDE8DF 100%);
+}
+
+/* vertical glass panes — structural lines */
+.glass-lines{
+  position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent calc(120px - 1px),
+      rgba(28,25,21,.04) calc(120px - 1px),
+      rgba(28,25,21,.04) 120px
+    );
+  opacity:.6;
+}
+/* horizontal beams */
+.glass-beams{
+  position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0px,
+      transparent calc(160px - 1px),
+      rgba(28,25,21,.03) calc(160px - 1px),
+      rgba(28,25,21,.03) 160px
+    );
+  opacity:.8;
+}
+
+/* ─ sphere objects ─ */
+.sphere{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle at 38% 35%,
+    rgba(255,251,245,1) 0%,
+    rgba(230,218,200,.95) 40%,
+    rgba(190,170,145,.8) 70%,
+    rgba(150,130,108,.5) 90%,
+    transparent 100%);
+  box-shadow:
+    inset -6px -8px 20px rgba(120,95,70,.18),
+    inset 4px 5px 16px rgba(255,250,240,.9),
+    4px 8px 32px rgba(120,95,70,.12);
+  transition:transform 8s ease-in-out;
+}
+.sphere-1{width:220px;height:220px;top:8%;right:24%;animation:float1 9s ease-in-out infinite}
+.sphere-2{width:140px;height:140px;top:20%;right:9%;animation:float2 11s ease-in-out infinite}
+.sphere-3{width:80px;height:80px;top:52%;right:34%;animation:float3 7s ease-in-out infinite;opacity:.7}
+.sphere-4{width:52px;height:52px;top:15%;left:20%;animation:float2 13s ease-in-out infinite;opacity:.5}
+
+@keyframes float1{0%,100%{transform:translateY(0) translateX(0)}33%{transform:translateY(-14px) translateX(6px)}66%{transform:translateY(8px) translateX(-4px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes float3{0%,100%{transform:translateY(0) translateX(0)}40%{transform:translateY(12px) translateX(-8px)}80%{transform:translateY(-8px) translateX(5px)}}
+
+/* ─ abstract figure (light silhouette) ─ */
+.hero-figure{
+  position:absolute;bottom:0;left:26%;
+  width:200px;height:480px;pointer-events:none;
+  opacity:.18;
+}
+.hero-figure-svg{width:100%;height:100%}
+
+/* ─ oak table ─ */
+.oak-table{
+  position:absolute;bottom:8%;right:12%;
+  width:280px;height:80px;pointer-events:none;
+}
+.oak-table-top{
+  width:100%;height:24px;background:linear-gradient(180deg,#C4975A 0%,#A87B40 60%,#8C6330 100%);
+  border-radius:4px;
+  box-shadow:0 2px 16px rgba(120,85,40,.18);
+}
+.oak-table-legs{
+  display:flex;justify-content:space-between;padding:0 24px;
+  margin-top:0;
+}
+.oak-leg{
+  width:12px;height:52px;
+  background:linear-gradient(180deg,#A87B40 0%,#8C6330 100%);
+  border-radius:0 0 4px 4px;
+}
+
+/* ─ hanging light orb ─ */
+.light-orb{
+  position:absolute;top:0;right:16%;
+  display:flex;flex-direction:column;align-items:center;
+  pointer-events:none;
+}
+.light-cord{width:1px;height:200px;background:linear-gradient(180deg,rgba(28,25,21,.2) 0%,rgba(28,25,21,.08) 100%)}
+.light-ball{
+  width:44px;height:44px;border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,#FFFDE8 0%,#F5E8C0 40%,#DEC890 70%,rgba(200,165,95,.4) 100%);
+  box-shadow:0 0 40px 12px rgba(255,235,150,.25), 0 4px 16px rgba(180,140,70,.2);
+}
+
+/* ─ hero content ─ */
+.hero-content{
+  position:relative;z-index:10;
+  max-width:var(--max);width:100%;margin:0 auto;
+}
+.hero-eyebrow{
+  font-size:11px;font-weight:400;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--oak);margin-bottom:28px;
+  display:flex;align-items:center;gap:16px;
+}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--oak)}
+.hero-h1{
+  font-size:clamp(52px,8.5vw,130px);
+  font-weight:800;letter-spacing:-.05em;line-height:.92;
+  color:var(--text);margin-bottom:36px;max-width:900px;
+}
+.hero-h1 span{color:var(--oak)}
+.hero-sub{
+  font-size:clamp(16px,1.6vw,19px);font-weight:300;
+  color:var(--sub);line-height:1.7;max-width:460px;
+  margin-bottom:52px;letter-spacing:-.01em;
+}
+.hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.btn-primary{
+  font-size:14px;font-weight:500;letter-spacing:-.02em;
+  color:var(--bg);background:var(--text);
+  padding:14px 36px;border-radius:100px;
+  transition:background .25s, transform .2s;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.btn-primary:hover{background:var(--oak);transform:translateY(-1px)}
+.btn-ghost{
+  font-size:14px;font-weight:400;letter-spacing:-.01em;color:var(--sub);
+  display:inline-flex;align-items:center;gap:8px;transition:gap .2s, color .2s;
+}
+.btn-ghost:hover{gap:12px;color:var(--text)}
+.btn-arrow{font-size:16px;transition:transform .2s}
+.btn-ghost:hover .btn-arrow{transform:translateX(4px)}
+
+/* small stat badges on hero */
+.hero-badges{
+  position:absolute;right:0;bottom:20px;
+  display:flex;flex-direction:column;gap:12px;
+  pointer-events:none;
+}
+.hero-badge{
+  background:rgba(247,244,239,.88);backdrop-filter:blur(16px);
+  border:1px solid var(--line);border-radius:12px;
+  padding:14px 20px;display:flex;align-items:center;gap:14px;
+  box-shadow:0 4px 24px rgba(28,25,21,.06);
+}
+.hb-num{font-size:22px;font-weight:700;letter-spacing:-.04em;color:var(--oak)}
+.hb-label{font-size:12px;color:var(--sub);line-height:1.4}
+
+/* ══════════════════════════════════════════
+   TICKER / MARQUEE
+══════════════════════════════════════════ */
+.ticker{
+  overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--panel);padding:16px 0;
+  white-space:nowrap;
+}
+.ticker-inner{
+  display:inline-flex;gap:64px;
+  animation:ticker 28s linear infinite;
+}
+.ticker-inner:hover{animation-play-state:paused}
+.ticker-item{
+  font-size:13px;font-weight:400;letter-spacing:.5px;
+  color:var(--sub);text-transform:uppercase;
+  display:flex;align-items:center;gap:16px;
+}
+.ticker-dot{width:4px;height:4px;background:var(--oak);border-radius:50%;flex-shrink:0}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══════════════════════════════════════════
+   INTRO — large editorial statement
+══════════════════════════════════════════ */
+.intro{padding:clamp(80px,12vw,160px) clamp(24px,4vw,72px)}
+.intro-inner{max-width:var(--max);margin:0 auto}
+.intro-label{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:40px;
+  display:flex;align-items:center;gap:12px;
+}
+.intro-label::before{content:'';display:block;width:24px;height:1px;background:var(--muted)}
+.intro-statement{
+  font-size:clamp(28px,4.5vw,60px);
+  font-weight:300;line-height:1.25;letter-spacing:-.03em;
+  color:var(--text);max-width:1100px;
+}
+.intro-statement strong{font-weight:700}
+.intro-statement em{font-style:italic;color:var(--oak)}
+.intro-rule{
+  margin-top:60px;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--line);padding-top:32px;
+  flex-wrap:wrap;gap:20px;
+}
+.intro-rule-tag{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+
+/* ══════════════════════════════════════════
+   STATS ROW
+══════════════════════════════════════════ */
+.stats{
+  background:var(--panel);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.stats-inner{
+  max-width:var(--max);margin:0 auto;padding:0 clamp(24px,4vw,72px);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat{
+  padding:52px 32px;border-right:1px solid var(--line);
+  display:flex;flex-direction:column;gap:10px;
+}
+.stat:last-child{border-right:none}
+.stat-num{
+  font-size:clamp(40px,4.5vw,64px);font-weight:700;
+  letter-spacing:-.05em;line-height:1;color:var(--text);
+}
+.stat-num span{font-size:.55em;font-weight:300;color:var(--oak)}
+.stat-desc{font-size:13px;color:var(--sub);line-height:1.5;letter-spacing:-.01em}
+
+/* ══════════════════════════════════════════
+   PROGRAMS — gallery card layout
+══════════════════════════════════════════ */
+.programs{padding:clamp(80px,12vw,160px) clamp(24px,4vw,72px)}
+.programs-inner{max-width:var(--max);margin:0 auto}
+.section-header{
+  display:grid;grid-template-columns:1fr auto;
+  align-items:end;margin-bottom:56px;gap:20px;
+}
+.section-label{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.section-label::before{content:'';display:block;width:24px;height:1px;background:var(--muted)}
+.section-h2{
+  font-size:clamp(36px,5.5vw,76px);
+  font-weight:700;letter-spacing:-.05em;line-height:.95;
+}
+.section-h2 em{font-style:italic;font-weight:300;color:var(--oak)}
+.section-link{
+  font-size:13px;color:var(--sub);display:flex;align-items:center;
+  gap:6px;transition:gap .2s,color .2s;white-space:nowrap;
+}
+.section-link:hover{gap:10px;color:var(--text)}
+
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr) 1fr;gap:2px;border-radius:20px;overflow:hidden;min-height:520px}
+
+.prog-card{
+  background:var(--panel);
+  padding:48px 36px;
+  position:relative;overflow:hidden;
+  cursor:pointer;transition:background .3s;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.prog-card:hover{background:var(--warm)}
+.prog-card.feature{
+  grid-column:1/3;grid-row:1/2;
+  background:var(--text);color:#fff;
+}
+.prog-card.feature:hover{background:#2A2420}
+
+/* sphere in feature card */
+.prog-sphere{
+  position:absolute;right:-40px;top:-40px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,rgba(255,245,235,.25) 0%,rgba(184,145,107,.15) 50%,transparent 80%);
+  border:1px solid rgba(184,145,107,.2);
+}
+
+.prog-num{
+  position:absolute;top:28px;left:36px;
+  font-size:11px;letter-spacing:1.5px;color:var(--muted);
+  text-transform:uppercase;
+}
+.prog-card.feature .prog-num{color:rgba(255,255,255,.3)}
+.prog-icon{font-size:32px;margin-bottom:20px}
+.prog-tag{
+  font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  color:var(--oak);background:var(--oak-l);
+  padding:4px 12px;border-radius:100px;
+  display:inline-block;margin-bottom:16px;align-self:flex-start;
+}
+.prog-card.feature .prog-tag{color:#F5D8AE;background:rgba(184,145,107,.2)}
+.prog-h3{
+  font-size:clamp(22px,2.5vw,32px);font-weight:700;
+  letter-spacing:-.04em;line-height:1.1;margin-bottom:12px;
+}
+.prog-desc{
+  font-size:14px;line-height:1.65;color:var(--sub);
+  max-width:320px;
+}
+.prog-card.feature .prog-desc{color:rgba(255,255,255,.55)}
+.prog-count{
+  margin-top:24px;font-size:12px;color:var(--muted);
+  display:flex;align-items:center;gap:8px;
+}
+.prog-count::before{content:'';width:20px;height:1px;background:var(--muted)}
+.prog-card.feature .prog-count{color:rgba(255,255,255,.3)}
+.prog-card.feature .prog-count::before{background:rgba(255,255,255,.2)}
+
+/* vertical sidebar card */
+.prog-card.side{grid-column:4/5;grid-row:1/2;justify-content:center;align-items:center;text-align:center}
+
+/* ══════════════════════════════════════════
+   METHOD — alternating rows
+══════════════════════════════════════════ */
+.method{
+  background:var(--panel);
+  border-top:1px solid var(--line);
+  padding:clamp(80px,12vw,160px) clamp(24px,4vw,72px);
+}
+.method-inner{max-width:var(--max);margin:0 auto}
+.method-row{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;
+  padding:64px 0;border-bottom:1px solid var(--line);
+}
+.method-row:first-of-type{padding-top:0}
+.method-row:last-of-type{border-bottom:none;padding-bottom:0}
+.method-row.rev{direction:rtl}
+.method-row.rev>*{direction:ltr}
+.method-visual{
+  aspect-ratio:4/3;
+  background:var(--warm);border-radius:20px;
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.method-sphere-wrap{position:relative;width:160px;height:160px}
+.method-sphere{
+  width:160px;height:160px;border-radius:50%;
+  background:radial-gradient(circle at 38% 35%,
+    rgba(255,251,245,1) 0%,rgba(230,215,195,.95) 40%,
+    rgba(184,155,120,.8) 70%,rgba(140,108,75,.4) 90%,transparent 100%);
+  box-shadow:inset -4px -6px 16px rgba(100,70,40,.15),inset 3px 4px 12px rgba(255,248,235,.8),3px 6px 24px rgba(100,70,40,.1);
+}
+.method-lines{
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent 0,transparent 39px,rgba(28,25,21,.04) 39px,rgba(28,25,21,.04) 40px);
+}
+.method-num{
+  position:absolute;top:20px;right:24px;
+  font-size:80px;font-weight:700;letter-spacing:-.05em;
+  color:rgba(28,25,21,.05);line-height:1;
+}
+.method-label{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--oak);margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.method-label::before{content:'';display:block;width:24px;height:1px;background:var(--oak)}
+.method-h3{
+  font-size:clamp(28px,3.5vw,48px);font-weight:700;
+  letter-spacing:-.05em;line-height:1;margin-bottom:20px;
+}
+.method-h3 em{font-style:italic;font-weight:300;color:var(--oak)}
+.method-p{
+  font-size:15px;font-weight:300;color:var(--sub);
+  line-height:1.75;letter-spacing:-.01em;max-width:440px;
+}
+.method-pills{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;
+}
+.method-pill{
+  font-size:12px;color:var(--sub);
+  border:1px solid var(--line);
+  padding:6px 16px;border-radius:100px;
+  transition:border-color .2s,color .2s;
+}
+.method-pill:hover{border-color:var(--oak);color:var(--oak)}
+
+/* ══════════════════════════════════════════
+   RESULTS
+══════════════════════════════════════════ */
+.results{padding:clamp(80px,12vw,160px) clamp(24px,4vw,72px);background:var(--bg)}
+.results-inner{max-width:var(--max);margin:0 auto}
+.results-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;border-radius:20px;overflow:hidden;margin-top:56px}
+.result-tile{
+  background:var(--panel);padding:52px 40px;
+  position:relative;overflow:hidden;
+}
+.result-tile::after{
+  content:attr(data-score);
+  position:absolute;bottom:-20px;right:16px;
+  font-size:120px;font-weight:700;letter-spacing:-.06em;
+  color:rgba(28,25,21,.04);line-height:1;
+  pointer-events:none;
+}
+.result-score{
+  font-size:clamp(48px,5vw,72px);font-weight:700;
+  letter-spacing:-.06em;color:var(--text);margin-bottom:4px;
+}
+.result-score span{font-size:.4em;font-weight:300;color:var(--oak);letter-spacing:0}
+.result-exam{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.result-name{font-size:15px;font-weight:500;letter-spacing:-.02em;margin-bottom:4px}
+.result-note{font-size:13px;color:var(--sub)}
+
+/* bar chart mini */
+.result-bars{
+  display:flex;align-items:flex-end;gap:3px;
+  height:64px;margin-bottom:32px;
+}
+.rbar{
+  flex:1;border-radius:3px 3px 0 0;
+  background:var(--warm);
+  transition:height .6s cubic-bezier(.25,.46,.45,.94);
+}
+.rbar.hi{background:var(--oak)}
+
+/* ══════════════════════════════════════════
+   ABOUT — glass panel with figure
+══════════════════════════════════════════ */
+.about{
+  background:var(--text);color:#fff;
+  padding:clamp(80px,12vw,160px) clamp(24px,4vw,72px);
+  position:relative;overflow:hidden;
+}
+/* glass panel overlay */
+.about-glass{
+  position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg,transparent 0,transparent 119px,rgba(255,255,255,.025) 119px,rgba(255,255,255,.025) 120px);
+}
+.about-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+
+/* decorative sphere */
+.about-sphere{
+  width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle at 38% 35%,rgba(255,251,245,.15) 0%,rgba(184,145,107,.1) 40%,transparent 75%);
+  border:1px solid rgba(184,145,107,.15);
+  margin:0 auto;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.about-sphere-inner{
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle at 38% 35%,rgba(255,251,245,.3) 0%,rgba(184,145,107,.2) 50%,transparent 80%);
+  border:1px solid rgba(184,145,107,.2);
+}
+
+.about-label{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--oak);margin-bottom:20px;
+  display:flex;align-items:center;gap:12px;
+}
+.about-label::before{content:'';display:block;width:24px;height:1px;background:var(--oak)}
+.about h2{
+  font-size:clamp(36px,5vw,68px);font-weight:700;
+  letter-spacing:-.05em;line-height:.95;margin-bottom:28px;
+}
+.about h2 em{font-style:italic;font-weight:300;color:rgba(184,145,107,.8)}
+.about-p{
+  font-size:15px;font-weight:300;color:rgba(255,255,255,.55);
+  line-height:1.8;letter-spacing:-.01em;margin-bottom:32px;
+}
+.about-credentials{
+  border-top:1px solid rgba(255,255,255,.08);
+  margin-top:8px;
+}
+.cred-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:18px 0;border-bottom:1px solid rgba(255,255,255,.06);
+  transition:opacity .25s;
+}
+.cred-row:hover{opacity:.7}
+.cred-role{font-size:12px;color:rgba(255,255,255,.3);letter-spacing:.5px}
+.cred-name{font-size:clamp(16px,1.8vw,22px);font-weight:500;letter-spacing:-.03em}
+
+/* ══════════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════════ */
+.testi{
+  padding:clamp(80px,12vw,160px) clamp(24px,4vw,72px);
+  background:var(--panel);
+  border-top:1px solid var(--line);
+}
+.testi-inner{max-width:var(--max);margin:0 auto}
+.testi-scroll{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  margin-top:56px;
+}
+.testi-card{
+  background:var(--bg);border-radius:16px;
+  padding:40px;display:flex;flex-direction:column;
+  transition:transform .35s;
+}
+.testi-card:hover{transform:translateY(-4px)}
+.testi-tag{
+  font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  color:var(--oak);border:1px solid rgba(184,145,107,.3);
+  padding:4px 12px;border-radius:100px;
+  display:inline-block;align-self:flex-start;margin-bottom:24px;
+}
+.testi-quote{
+  font-size:clamp(14px,1.4vw,16px);font-weight:300;font-style:italic;
+  color:var(--sub);line-height:1.75;flex:1;margin-bottom:28px;
+  letter-spacing:-.01em;
+}
+.testi-bottom{
+  border-top:1px solid var(--line);padding-top:20px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.testi-name{font-size:14px;font-weight:500;letter-spacing:-.02em}
+.testi-score{font-size:13px;color:var(--oak);font-weight:600}
+
+/* ══════════════════════════════════════════
+   BLOG
+══════════════════════════════════════════ */
+.blog{padding:clamp(80px,12vw,160px) clamp(24px,4vw,72px);background:var(--bg)}
+.blog-inner{max-width:var(--max);margin:0 auto}
+.blog-grid{
+  display:grid;grid-template-columns:1.6fr 1fr 1fr;
+  gap:16px;margin-top:56px;
+}
+.blog-card{
+  background:var(--panel);border-radius:16px;overflow:hidden;
+  transition:transform .35s;cursor:pointer;
+}
+.blog-card:hover{transform:translateY(-4px)}
+.blog-card.main{grid-row:1/3}
+.blog-thumb{
+  aspect-ratio:3/2;background:var(--warm);
+  position:relative;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.blog-card.main .blog-thumb{aspect-ratio:unset;height:340px}
+/* decorative sphere in blog thumb */
+.blog-sphere{
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle at 38% 35%,rgba(255,248,235,.8) 0%,rgba(200,170,130,.6) 50%,rgba(150,115,75,.3) 80%);
+  box-shadow:inset -3px -4px 12px rgba(100,70,40,.12),inset 2px 3px 8px rgba(255,245,225,.6);
+  transition:transform .4s;
+}
+.blog-card:hover .blog-sphere{transform:scale(1.08) translateY(-4px)}
+.blog-cat{
+  position:absolute;bottom:16px;left:16px;
+  font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  color:var(--bg);background:var(--text);
+  padding:4px 12px;border-radius:100px;
+}
+.blog-body{padding:28px}
+.blog-date{font-size:11px;color:var(--muted);letter-spacing:.5px;margin-bottom:8px}
+.blog-title{font-size:clamp(14px,1.4vw,17px);font-weight:600;letter-spacing:-.03em;line-height:1.4}
+.blog-card.main .blog-title{font-size:clamp(18px,2vw,24px)}
+
+/* ══════════════════════════════════════════
+   PRICING
+══════════════════════════════════════════ */
+.pricing{
+  background:var(--panel);
+  border-top:1px solid var(--line);
+  padding:clamp(80px,12vw,160px) clamp(24px,4vw,72px);
+}
+.pricing-inner{max-width:var(--max);margin:0 auto}
+.pricing-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:16px;max-width:900px;margin:56px auto 0;
+}
+.price-card{
+  background:var(--bg);border-radius:20px;
+  padding:52px;position:relative;overflow:hidden;
+  transition:transform .3s;
+}
+.price-card:hover{transform:translateY(-4px)}
+.price-card.hero-card{
+  background:var(--text);color:#fff;
+}
+.price-badge{
+  position:absolute;top:24px;right:24px;
+  font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  color:var(--oak);border:1px solid rgba(184,145,107,.4);
+  padding:4px 12px;border-radius:100px;
+}
+.price-card.hero-card .price-badge{color:#F5D8AE;border-color:rgba(245,216,174,.3)}
+.price-name{font-size:14px;font-weight:500;letter-spacing:-.02em;margin-bottom:8px}
+.price-desc{font-size:13px;color:var(--sub);margin-bottom:36px;line-height:1.5}
+.price-card.hero-card .price-desc{color:rgba(255,255,255,.4)}
+.price-amount{
+  font-size:clamp(40px,4vw,58px);font-weight:700;
+  letter-spacing:-.05em;line-height:1;margin-bottom:36px;
+}
+.price-amount small{font-size:.35em;font-weight:300;color:var(--sub);letter-spacing:0}
+.price-card.hero-card .price-amount small{color:rgba(255,255,255,.35)}
+.price-features{display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
+.price-feature{
+  font-size:13px;color:var(--sub);
+  display:flex;align-items:center;gap:12px;
+}
+.price-card.hero-card .price-feature{color:rgba(255,255,255,.5)}
+.price-feature::before{content:'—';color:var(--oak);font-weight:400}
+.price-btn{
+  width:100%;font-size:14px;font-weight:500;letter-spacing:-.01em;
+  padding:15px 28px;border-radius:100px;cursor:pointer;
+  transition:all .25s;border:none;font-family:var(--sans);
+}
+.price-btn-primary{background:var(--bg);color:var(--text)}
+.price-btn-primary:hover{background:var(--oak);color:#fff}
+.price-btn-secondary{background:var(--text);color:var(--bg)}
+.price-btn-secondary:hover{background:var(--oak)}
+
+/* ══════════════════════════════════════════
+   CTA FINAL
+══════════════════════════════════════════ */
+.cta{
+  padding:clamp(100px,14vw,200px) clamp(24px,4vw,72px);
+  background:var(--bg);
+  border-top:1px solid var(--line);
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+/* big glass sphere decoration */
+.cta-sphere{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle at 42% 38%,rgba(255,248,235,.4) 0%,rgba(200,170,130,.15) 40%,transparent 70%);
+  border:1px solid rgba(184,145,107,.1);
+  pointer-events:none;
+}
+.cta-sphere-inner{
+  width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle at 40% 36%,rgba(255,248,235,.6) 0%,rgba(184,145,107,.2) 50%,transparent 75%);
+  border:1px solid rgba(184,145,107,.15);
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.cta-inner{position:relative;z-index:2;max-width:900px;margin:0 auto}
+.cta-label{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--oak);margin-bottom:28px;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+}
+.cta-label::before,.cta-label::after{content:'';display:block;width:24px;height:1px;background:var(--oak)}
+.cta h2{
+  font-size:clamp(48px,8vw,120px);
+  font-weight:700;letter-spacing:-.06em;line-height:.9;
+  margin-bottom:40px;
+}
+.cta h2 em{font-style:italic;font-weight:300;color:var(--oak)}
+.cta-actions{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+.footer{
+  background:var(--panel);border-top:1px solid var(--line);
+  padding:60px clamp(24px,4vw,72px);
+}
+.footer-inner{
+  max-width:var(--max);margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:24px;
+}
+.footer-logo{font-size:16px;font-weight:700;letter-spacing:-.04em}
+.footer-links{display:flex;gap:28px}
+.footer-links a{font-size:13px;color:var(--sub);transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--muted)}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media(max-width:900px){
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:none}
+  .prog-grid{grid-template-columns:1fr 1fr;min-height:auto}
+  .prog-card.feature{grid-column:1/3}
+  .prog-card.side{grid-column:1/3;grid-row:auto;min-height:200px}
+  .method-row{grid-template-columns:1fr}
+  .method-row.rev{direction:ltr}
+  .about-grid{grid-template-columns:1fr}
+  .about-sphere{width:260px;height:260px}
+  .about-sphere-inner{width:140px;height:140px}
+  .results-grid{grid-template-columns:1fr 1fr}
+  .testi-scroll{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:1fr}
+  .blog-card.main{grid-row:auto}
+  .pricing-grid{grid-template-columns:1fr}
+  .section-header{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:600px){
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .results-grid{grid-template-columns:1fr}
+  .hero-badges{display:none}
+  .prog-grid{grid-template-columns:1fr}
+  .prog-card.feature{grid-column:1/2}
+  .prog-card.side{grid-column:1/2}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <span class="nav-logo-dot"></span>
+      Isabel English
+    </a>
+    <div class="nav-links">
+      <a href="#">Programs</a>
+      <a href="#">Method</a>
+      <a href="#">Results</a>
+      <a href="#">About</a>
+      <a href="#">Blog</a>
+    </div>
+    <a class="nav-cta" href="#">Begin</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-arch">
+    <div class="hero-sky"></div>
+    <div class="glass-lines"></div>
+    <div class="glass-beams"></div>
+
+    <!-- spheres -->
+    <div class="sphere sphere-1"></div>
+    <div class="sphere sphere-2"></div>
+    <div class="sphere sphere-3"></div>
+    <div class="sphere sphere-4"></div>
+
+    <!-- hanging light -->
+    <div class="light-orb">
+      <div class="light-cord"></div>
+      <div class="light-ball"></div>
+    </div>
+
+    <!-- oak table -->
+    <div class="oak-table">
+      <div class="oak-table-top"></div>
+      <div class="oak-table-legs">
+        <div class="oak-leg"></div>
+        <div class="oak-leg"></div>
+      </div>
+    </div>
+
+    <!-- abstract walking figure (SVG) -->
+    <svg class="hero-figure hero-figure-svg" viewBox="0 0 200 480" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;bottom:0;left:26%;width:180px;height:440px;opacity:.15">
+      <!-- head -->
+      <ellipse cx="100" cy="50" rx="28" ry="32" fill="#1C1915"/>
+      <!-- body - flowing robe/coat -->
+      <path d="M72 80 C60 120 55 200 58 280 C60 320 65 360 70 400 C75 440 80 460 100 470 C120 460 125 440 130 400 C135 360 140 320 142 280 C145 200 140 120 128 80 Z" fill="#1C1915" opacity=".9"/>
+      <!-- arm extended slightly -->
+      <path d="M70 120 C50 150 40 170 38 190 C36 200 40 205 46 200 C52 195 60 175 75 150 Z" fill="#1C1915"/>
+      <!-- subtle walking posture -->
+      <path d="M90 400 C85 430 80 455 78 470 L88 472 C90 458 95 432 100 400 Z" fill="#1C1915"/>
+      <path d="M110 400 C115 430 118 455 120 470 L110 472 C108 458 105 432 100 400 Z" fill="#1C1915" opacity=".8"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Isabel English — HessEDU</p>
+    <h1 class="hero-h1">Fluency<br>cultivated<br><span>slowly.</span></h1>
+    <p class="hero-sub">동시통역사 출신 Isabel Kim의 체계적 영어 교육. IELTS·Academic·Business — 언어가 정확하고 자연스러워질 때까지.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#">Program 보기 →</a>
+      <a class="btn-ghost" href="#">400+ 콘텐츠 탐색 <span class="btn-arrow">↗</span></a>
+    </div>
+  </div>
+
+  <!-- stat badges -->
+  <div class="hero-badges">
+    <div class="hero-badge">
+      <div class="hb-num">400+</div>
+      <div class="hb-label">Blog 콘텐츠<br>누적</div>
+    </div>
+    <div class="hero-badge">
+      <div class="hb-num">7.5+</div>
+      <div class="hb-label">IELTS 평균<br>달성 점수</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TICKER ── -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item"><span class="ticker-dot"></span>IELTS Speaking</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>IELTS Writing</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Academic English</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Business English</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Grammar Mastery</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Pronunciation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Vocabulary Building</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>동시통역사 출신</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>IELTS Speaking</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>IELTS Writing</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Academic English</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Business English</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Grammar Mastery</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Pronunciation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Vocabulary Building</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>동시통역사 출신</span>
+  </div>
+</div>
+
+<!-- ── INTRO ── -->
+<section class="intro reveal">
+  <div class="intro-inner">
+    <p class="intro-label">Philosophy</p>
+    <p class="intro-statement">
+      영어는 외우는 것이 아닙니다.<br>
+      <strong>실제 언어가 작동하는 방식을</strong> 이해할 때,<br>
+      말과 글이 <em>자연스럽게</em> 흘러나옵니다.
+    </p>
+    <div class="intro-rule">
+      <span class="intro-rule-tag">Since 2018 · Seoul</span>
+      <span class="intro-rule-tag">IELTS · Academic · Business</span>
+      <span class="intro-rule-tag">400+ Articles Published</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats reveal">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">400<span>+</span></div>
+      <div class="stat-desc">블로그 콘텐츠<br>체계적으로 정리된 학습 자료</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">236<span>개</span></div>
+      <div class="stat-desc">IELTS Speaking<br>실전 예시 & 전략</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">259<span>개</span></div>
+      <div class="stat-desc">IELTS Writing<br>Task 1 · Task 2 분석</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">7.5<span>↑</span></div>
+      <div class="stat-desc">수강생 평균<br>IELTS Overall 달성</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROGRAMS ── -->
+<section class="programs reveal">
+  <div class="programs-inner">
+    <div class="section-header">
+      <div>
+        <p class="section-label">Programs</p>
+        <h2 class="section-h2">What we<br><em>cultivate</em></h2>
+      </div>
+      <a class="section-link" href="#">All programs →</a>
+    </div>
+
+    <div class="prog-grid">
+      <!-- feature card -->
+      <div class="prog-card feature">
+        <div class="prog-sphere"></div>
+        <span class="prog-num">01</span>
+        <span class="prog-tag">Most Popular</span>
+        <h3 class="prog-h3">IELTS Speaking<br>Mastery</h3>
+        <p class="prog-desc">실제 시험관이 평가하는 방식 그대로. Fluency·Coherence·Vocabulary·Pronunciation 4개 기준을 완벽히 내면화합니다.</p>
+        <div class="prog-count">236 articles & lessons</div>
+      </div>
+
+      <!-- card 2 -->
+      <div class="prog-card reveal">
+        <span class="prog-num">02</span>
+        <span class="prog-tag">Core Program</span>
+        <h3 class="prog-h3">IELTS Writing<br>Task 1 & 2</h3>
+        <p class="prog-desc">Academic graphs부터 Opinion essays까지. Band 7+ 달성을 위한 구조와 어휘.</p>
+        <div class="prog-count">259 articles & templates</div>
+      </div>
+
+      <!-- card 3 -->
+      <div class="prog-card reveal">
+        <span class="prog-num">03</span>
+        <span class="prog-tag">Advanced</span>
+        <h3 class="prog-h3">Academic &<br>Business English</h3>
+        <p class="prog-desc">대학원·직장에서 실제 쓰이는 정확하고 세련된 영어 표현.</p>
+        <div class="prog-count">48 articles & frameworks</div>
+      </div>
+
+      <!-- side card -->
+      <div class="prog-card side reveal">
+        <span class="prog-num">04</span>
+        <span class="prog-tag" style="text-align:center">Grammar</span>
+        <h3 class="prog-h3" style="text-align:center;font-size:20px">Grammar<br>Core</h3>
+        <p class="prog-desc" style="text-align:center;font-size:13px;max-width:100%">정확한 문법 기반 구축</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── METHOD ── -->
+<section class="method reveal">
+  <div class="method-inner">
+    <p class="section-label">Method</p>
+    <h2 class="section-h2" style="margin-bottom:0">How it <em>works</em></h2>
+
+    <!-- row 1 -->
+    <div class="method-row">
+      <div class="method-visual">
+        <div class="method-lines"></div>
+        <div class="method-num">01</div>
+        <div class="method-sphere-wrap">
+          <div class="method-sphere"></div>
+        </div>
+      </div>
+      <div>
+        <p class="method-label">Step 01</p>
+        <h3 class="method-h3">Real-world<br><em>content first</em></h3>
+        <p class="method-p">교과서 영어가 아니라 실제 원어민이 쓰는 표현, 뉴스 기사, 학술 논문에서 출발합니다. 언어의 진짜 맥락을 경험해야 체득됩니다.</p>
+        <div class="method-pills">
+          <span class="method-pill">Authentic Sources</span>
+          <span class="method-pill">Context-based</span>
+          <span class="method-pill">Native Patterns</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- row 2 -->
+    <div class="method-row rev">
+      <div class="method-visual" style="background:#EDE8DF">
+        <div class="method-lines"></div>
+        <div class="method-num">02</div>
+        <!-- two spheres -->
+        <div style="display:flex;gap:16px">
+          <div class="method-sphere" style="width:100px;height:100px"></div>
+          <div class="method-sphere" style="width:70px;height:70px;margin-top:30px;opacity:.7"></div>
+        </div>
+      </div>
+      <div>
+        <p class="method-label">Step 02</p>
+        <h3 class="method-h3">Pattern<br><em>recognition</em></h3>
+        <p class="method-p">반복되는 언어 패턴을 인식하고 구조화합니다. 문법 규칙을 암기하는 것이 아니라, 언어가 어떻게 작동하는지를 이해합니다.</p>
+        <div class="method-pills">
+          <span class="method-pill">Structural Analysis</span>
+          <span class="method-pill">Pattern Chunking</span>
+          <span class="method-pill">Intuitive Grammar</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- row 3 -->
+    <div class="method-row">
+      <div class="method-visual" style="background:#DED8CE">
+        <div class="method-lines"></div>
+        <div class="method-num">03</div>
+        <div class="method-sphere" style="width:80px;height:80px;position:absolute;top:32px;right:40px;opacity:.8"></div>
+        <div class="method-sphere" style="width:130px;height:130px"></div>
+      </div>
+      <div>
+        <p class="method-label">Step 03</p>
+        <h3 class="method-h3">Production<br><em>&amp; refinement</em></h3>
+        <p class="method-p">직접 말하고 쓰고 피드백을 받으며 정확성을 높입니다. IELTS 실전 조건에서 반복적으로 훈련하여 자동화합니다.</p>
+        <div class="method-pills">
+          <span class="method-pill">Output Practice</span>
+          <span class="method-pill">Detailed Feedback</span>
+          <span class="method-pill">IELTS-focused</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RESULTS ── -->
+<section class="results reveal">
+  <div class="results-inner">
+    <div class="section-header">
+      <div>
+        <p class="section-label">Results</p>
+        <h2 class="section-h2">Student<br><em>achievements</em></h2>
+      </div>
+    </div>
+    <div class="results-grid">
+      <div class="result-tile reveal" data-score="7.5">
+        <div class="result-bars">
+          <div class="rbar" style="height:40%"></div>
+          <div class="rbar" style="height:60%"></div>
+          <div class="rbar hi" style="height:85%"></div>
+          <div class="rbar hi" style="height:90%"></div>
+          <div class="rbar hi" style="height:95%"></div>
+        </div>
+        <div class="result-score">7.5<span>band</span></div>
+        <div class="result-exam">IELTS Overall</div>
+        <div class="result-name">김지원 — Graduate Applicant</div>
+        <div class="result-note">6개월 집중 수업 후 목표 달성</div>
+      </div>
+      <div class="result-tile reveal" data-score="8.0">
+        <div class="result-bars">
+          <div class="rbar" style="height:50%"></div>
+          <div class="rbar hi" style="height:75%"></div>
+          <div class="rbar hi" style="height:90%"></div>
+          <div class="rbar hi" style="height:100%"></div>
+          <div class="rbar" style="height:80%"></div>
+        </div>
+        <div class="result-score">8.0<span>band</span></div>
+        <div class="result-exam">IELTS Speaking</div>
+        <div class="result-name">이수현 — Medical Professional</div>
+        <div class="result-note">Speaking 집중 과정 12주 완성</div>
+      </div>
+      <div class="result-tile reveal" data-score="7.0">
+        <div class="result-bars">
+          <div class="rbar" style="height:30%"></div>
+          <div class="rbar" style="height:50%"></div>
+          <div class="rbar hi" style="height:70%"></div>
+          <div class="rbar hi" style="height:88%"></div>
+          <div class="rbar hi" style="height:88%"></div>
+        </div>
+        <div class="result-score">7.0<span>band</span></div>
+        <div class="result-exam">IELTS Writing</div>
+        <div class="result-name">박서준 — MBA Candidate</div>
+        <div class="result-note">Task 2 Essay 구조적 접근으로 향상</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about reveal">
+  <div class="about-glass"></div>
+  <div class="about-inner">
+    <div class="about-grid">
+      <div class="about-sphere">
+        <div class="about-sphere-inner"></div>
+      </div>
+      <div>
+        <p class="about-label">About Isabel</p>
+        <h2>Language is<br><em>architecture</em></h2>
+        <p class="about-p">동시통역사로 훈련받으며 언어의 구조를 누구보다 깊이 이해했습니다. 단어 하나, 문장 구조 하나에도 의도와 정확성이 있어야 합니다. 그 원칙이 영어 교육에도 그대로 적용됩니다.</p>
+        <div class="about-credentials">
+          <div class="cred-row">
+            <span class="cred-role">Background</span>
+            <span class="cred-name">동시통역사 출신</span>
+          </div>
+          <div class="cred-row">
+            <span class="cred-role">Specialization</span>
+            <span class="cred-name">IELTS · Academic English</span>
+          </div>
+          <div class="cred-row">
+            <span class="cred-role">Platform</span>
+            <span class="cred-name">HessEDU Blog · 400+ Articles</span>
+          </div>
+          <div class="cred-row">
+            <span class="cred-role">Teaching Since</span>
+            <span class="cred-name">2018 — Present</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testi reveal">
+  <div class="testi-inner">
+    <div class="section-header">
+      <div>
+        <p class="section-label">Testimonials</p>
+        <h2 class="section-h2">Student<br><em>voices</em></h2>
+      </div>
+    </div>
+    <div class="testi-scroll">
+      <div class="testi-card reveal">
+        <span class="testi-tag">IELTS 7.5</span>
+        <p class="testi-quote">"Isabel 선생님 덕분에 speaking이 두렵지 않게 됐어요. 단순히 템플릿이 아니라 진짜 생각을 영어로 표현하는 법을 배웠습니다."</p>
+        <div class="testi-bottom">
+          <span class="testi-name">김지원</span>
+          <span class="testi-score">Overall 7.5</span>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <span class="testi-tag">IELTS Writing</span>
+        <p class="testi-quote">"Writing Task 2에서 항상 6.5에 막혔는데, 구조적 접근법을 배우고 나서 한 달 만에 7.5로 올렸습니다."</p>
+        <div class="testi-bottom">
+          <span class="testi-name">이수현</span>
+          <span class="testi-score">Writing 7.5</span>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <span class="testi-tag">Academic English</span>
+        <p class="testi-quote">"해외 대학원 입학 에세이를 함께 준비했습니다. 제 생각을 학문적이고 설득력 있게 표현하는 방법을 배웠어요."</p>
+        <div class="testi-bottom">
+          <span class="testi-name">박서준</span>
+          <span class="testi-score">IELTS 7.0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BLOG ── -->
+<section class="blog reveal">
+  <div class="blog-inner">
+    <div class="section-header">
+      <div>
+        <p class="section-label">Journal</p>
+        <h2 class="section-h2">From the<br><em>blog</em></h2>
+      </div>
+      <a class="section-link" href="https://blog.naver.com/isabelkim722" target="_blank">All articles →</a>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card main reveal">
+        <div class="blog-thumb">
+          <div class="blog-sphere" style="width:180px;height:180px"></div>
+          <span class="blog-cat">IELTS Speaking</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-date">2024 · Speaking</div>
+          <div class="blog-title">IELTS Speaking Part 2: Describe a Person — 고득점 답변 구조와 어휘 전략</div>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-thumb">
+          <div class="blog-sphere" style="width:80px;height:80px"></div>
+          <span class="blog-cat">Writing</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-date">2024 · Task 2</div>
+          <div class="blog-title">Opinion Essay에서 Band 7+ 받는 논리 전개 방식</div>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-thumb">
+          <div class="blog-sphere" style="width:70px;height:70px"></div>
+          <span class="blog-cat">Vocabulary</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-date">2023 · Advanced</div>
+          <div class="blog-title">Academic 영어에서 자주 쓰이는 discourse markers 완벽 정리</div>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-thumb" style="height:120px">
+          <span class="blog-cat">Grammar</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-date">2023</div>
+          <div class="blog-title">Conditionals 완전 정복: 실전 활용법</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing reveal">
+  <div class="pricing-inner">
+    <div style="text-align:center;max-width:600px;margin:0 auto">
+      <p class="section-label" style="justify-content:center">Pricing</p>
+      <h2 class="section-h2">Invest in<br><em>fluency</em></h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-name">Self-Study</div>
+        <div class="price-desc">블로그 콘텐츠 + 학습 자료 자율 이용</div>
+        <div class="price-amount">무료<small></small></div>
+        <div class="price-features">
+          <div class="price-feature">400+ 블로그 아티클 무제한 열람</div>
+          <div class="price-feature">IELTS Speaking · Writing 예시 자료</div>
+          <div class="price-feature">Grammar 핵심 정리 시리즈</div>
+        </div>
+        <button class="price-btn price-btn-secondary">블로그 방문하기</button>
+      </div>
+      <div class="price-card hero-card reveal">
+        <div class="price-badge">추천</div>
+        <div class="price-name">1:1 Mentoring</div>
+        <div class="price-desc">개인 맞춤 커리큘럼 + 실시간 피드백</div>
+        <div class="price-amount">문의<small>/상담 후 결정</small></div>
+        <div class="price-features">
+          <div class="price-feature">목표 기반 개인 커리큘럼 설계</div>
+          <div class="price-feature">매 수업 상세 피드백 노트</div>
+          <div class="price-feature">IELTS 실전 모의 시험 포함</div>
+          <div class="price-feature">네이버 블로그 전용 자료 제공</div>
+        </div>
+        <button class="price-btn price-btn-primary">상담 신청하기</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta reveal">
+  <div class="cta-sphere"><div class="cta-sphere-inner"></div></div>
+  <div class="cta-inner">
+    <p class="cta-label">Start today</p>
+    <h2>Begin<br><em>your</em><br>journey.</h2>
+    <div class="cta-actions">
+      <a class="btn-primary" href="#" style="font-size:16px;padding:16px 40px">상담 신청하기 →</a>
+      <a class="btn-ghost" href="https://blog.naver.com/isabelkim722" target="_blank" style="font-size:15px">블로그 방문하기 <span class="btn-arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Isabel English</div>
+    <div class="footer-links">
+      <a href="#">Programs</a>
+      <a href="#">About</a>
+      <a href="https://blog.naver.com/isabelkim722" target="_blank">Blog</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 HessEDU · Isabel Kim</div>
+  </div>
+</footer>
+
+<script>
+// ── NAV scroll ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', window.scrollY > 60);
+}, {passive:true});
+
+// ── Scroll reveal ──
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+  });
+}, {threshold:.1, rootMargin:'0px 0px -60px 0px'});
+reveals.forEach(el => io.observe(el));
+
+// ── Bar chart animate on scroll ──
+const resultTiles = document.querySelectorAll('.result-tile');
+const barIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const bars = e.target.querySelectorAll('.rbar');
+      bars.forEach((b,i) => {
+        setTimeout(() => {
+          const h = b.style.height;
+          b.style.height = '0%';
+          setTimeout(() => { b.style.height = h; }, 50 + i*80);
+        }, 200);
+      });
+      barIO.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+resultTiles.forEach(t => barIO.observe(t));
+
+// ── Parallax spheres on mouse move ──
+document.addEventListener('mousemove', e => {
+  const x = (e.clientX / window.innerWidth - .5) * 12;
+  const y = (e.clientY / window.innerHeight - .5) * 8;
+  document.querySelectorAll('.sphere').forEach((s,i) => {
+    const d = (i+1) * .6;
+    s.style.transform = `translate(${x*d}px, ${y*d}px)`;
+  });
+}, {passive:true});
+</script>
+</body>
+</html>
