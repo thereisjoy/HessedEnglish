@@ -771,10 +771,11 @@ input::placeholder{color:var(--text-muted)}
 </footer>
 
 <script>
+// ═══ GLOBAL DATA ═══
+let _D = {};
+
 (async function init(){
 // ═══ LOAD CONFIG: GitHub raw → localStorage fallback ═══
-// admin.html에서 저장한 설정을 GitHub에서 불러옵니다 (어느 기기에서 접속해도 동일하게 반영)
-let _D = {};
 try {
   const _ctrl = new AbortController();
   const _tid = setTimeout(() => _ctrl.abort(), 2500); // 2.5초 타임아웃
@@ -991,7 +992,10 @@ window.dispatchEvent(new Event('scroll'));
       if ($('aboutEmail')) $('aboutEmail').innerHTML = `✉ ${f.email}`;
     }
   }
+  // ─── Hero Video Boot ───
+  if (typeof initHeroVideo === 'function') initHeroVideo();
 })();
+
 
 // ═══ ABOUT HOVER ═══
 const rows = document.querySelectorAll('.credential-row');
@@ -1017,7 +1021,10 @@ if (floatCta && heroSection) {
 })(); // end async init
 
 // ═══ HERO VIDEO BACKGROUND — random shuffle & crossfade ═══
-(function(){
+// ═══ HERO VIDEO BACKGROUND — random shuffle & crossfade ═══
+function initHeroVideo(){
+  if (window.heroVideoInitialized) return;
+  window.heroVideoInitialized = true;
   const srcs = (_D.hero && _D.hero.videos) ? _D.hero.videos : [
     'Source/유리_사무실_영상_생성.mp4',
     'Source/여자_선생님_여자_학생_영상_생성.mp4',
@@ -1103,7 +1110,10 @@ if (floatCta && heroSection) {
       attachEndedListener(cur);
     }
   }, 3000);
-})();
+}
+
+// Initial attempt to boot if _D is already empty/default
+initHeroVideo();
 </script>
 </body>
 </html>
